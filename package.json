@@ -1,0 +1,25 @@
+{
+  "name": "birthday-app",
+  "version": "1.0.0",
+  "description": "Hey team! So the final project here will be a birthday list.",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganamavo/birthday-app.git"
+  },
+  "author": "Rinon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganamavo/birthday-app/issues"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "dependencies": {
+    "faker": "^5.1.0"
+  },
+  "homepage": "https://github.com/ganamavo/birthday-app#readme"
+}
