@@ -18,26 +18,21 @@ async function fetchPersons() {
 
     //get the array from ls
     const generatePersonHtml = (personList) => {
-        // // To get the date
-        // let today = new Date();
-        // let date = today.getDate(); 
-        
-        // Calcule the date
-        // let today = new Date()
-        // let past = new Date(2020,05,01) // remember this is equivalent to 06 01 2010
-//dates in js are counted from 0, so 05 is june
+        // To get the date
+        const today = new Date()
 
-function calcDate(date1,date2) {
-    var diff = Math.floor(date1.getTime() - date2.getTime());
-    var day = 1000 * 60 * 60 * 24;
+        // This is a function that handles the date and we'll call this when mapping the object
+        const calcDate = (date1, date2) => {
+            let diff = Math.floor(date1.getTime() - date2.getTime());
+            let day = 1000 * 60 * 60 * 24;
+            let days = Math.floor(diff / day);
+            let message = days;
 
-    var days = Math.floor(diff/day); 
-    var message = days;
-    return message;
-    }
- 
-const  myday = calcDate(new Date(2020,05,01))
-    console.log(myday)  
+            // Return the message
+            return message
+        }
+
+        // Show the list in the html
         return personList.map(data =>
             `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
@@ -52,7 +47,7 @@ const  myday = calcDate(new Date(2020,05,01))
                    Turns on the ${new Date(data.birthday).toLocaleDateString()}
                 </span>
             </td>
-            <td class="days"></td>
+         <td class="days">${calcDate(today, new Date(new Date(data.birthday).toLocaleDateString()))} Days</td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -76,8 +71,8 @@ const  myday = calcDate(new Date(2020,05,01))
     }
     displayPersonsList();
 
+    // A function that edits the person
     const editPerson = (e) => {
-        // code edit function here 
         // Open the modal 
         return new Promise(function (resolve) {
             const editIcon = e.target.closest(".edit");
@@ -86,7 +81,6 @@ const  myday = calcDate(new Date(2020,05,01))
                 const id = e.target.closest(".list_container").dataset.id;
                 editPersonPopup(id);
             }
-
         });
     };
 
@@ -100,6 +94,7 @@ const  myday = calcDate(new Date(2020,05,01))
         popup = null;
     }
 
+    // Edit the form
     function editPersonPopup(id) {
         const personToEdit = persons.find(person => person.id == id);
         // Create the form element
@@ -147,8 +142,7 @@ const  myday = calcDate(new Date(2020,05,01))
 
     }
 
-    // Delete list from the DOM
-
+    // Delete list from the local storage
     const deletePerson = (e) => {
         const deleteButton = e.target.closest(".delete_btn");
         if (deleteButton) {
@@ -160,6 +154,7 @@ const  myday = calcDate(new Date(2020,05,01))
 
     const deleteList = (idToDelete) => {
         const personsToKeep = persons.filter(person => person.id !== idToDelete);
+        // Show a warning before the user decides
         let deleteContainerPopup = document.createElement('div');
         deleteContainerPopup.classList.add('popup');
         deleteContainerPopup.insertAdjacentHTML('afterbegin', `
@@ -206,8 +201,8 @@ const  myday = calcDate(new Date(2020,05,01))
         const personListString = localStorage.getItem('persons');
         const personsList = JSON.parse(personListString);
         if (personsList.length) {
-        //   persons = personsList;
-        //   displayPersonsList()
+            persons = personsList;
+            displayPersonsList()
         }
         table.dispatchEvent(new CustomEvent('updateList'));
     };
@@ -218,4 +213,6 @@ const  myday = calcDate(new Date(2020,05,01))
     table.addEventListener("updateList", mirrorToLocalStorage);
     initLocalStorage();
 }
+
+
 fetchPersons();
