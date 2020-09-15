@@ -25,7 +25,21 @@
     padding: 32px;
 }
 
- button {
+button {
     padding-inline-start: 16px;
     padding-inline-end: 16px;
- }
+}
+.warning {
+	font-size: 24px;
+	color: white;
+}
+
+.confirm_delete {
+	background-color: red;
+	color: white;
+}
+
+.cancel_delete {
+	background-color: green;
+	color: white;
+}

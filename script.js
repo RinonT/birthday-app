@@ -1,6 +1,5 @@
-// import persons from "./people.json";
-
 // Grab all the necesssary elements
+const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
 
 // Importing the data
@@ -11,15 +10,16 @@ function wait(ms = 0) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
 // Fetch the data
 async function fetchPersons() {
     const respose = await fetch(`${endpoint}?`);
     let persons = await respose.json();
 
+    //get the array from ls
     const generatePersonHtml = (personList) => {
         let today = new Date();
-
-        let date = today.getDate();
+        let date = today.getDate();  
         return personList.map(data =>
             `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
@@ -31,7 +31,7 @@ async function fetchPersons() {
                   ${data.lastName} 
                 </span>
                 <span class="date d-block">
-                   Turns on the ${data.birthday}
+                   Turns on the ${new Date(data.birthday).toLocaleString('en-GB', { hour12:false })}
                 </span>
             </td>
             <td class="days">${date}</td>
@@ -49,8 +49,11 @@ async function fetchPersons() {
         ).join("");
     }
 
+    // Display the persons ' list in the html
     const displayPersonsList = () => {
-        const listHtml = generatePersonHtml(persons);
+        // Sorting the persons by birthday, from the soonest to the furthest
+        const sortedPersons = persons.sort((person1, person2) => person2.birthday - person1.birthday);
+        const listHtml = generatePersonHtml(sortedPersons);
         listContainer.innerHTML = listHtml;
     }
     displayPersonsList();
@@ -81,6 +84,10 @@ async function fetchPersons() {
 
     function editPersonPopup(id) {
         const personToEdit = persons.find(person => person.id == id);
+        // Create the form element
+        console.log(id);
+
+        console.log(personToEdit)
 
         let formPopup = document.createElement('form');
         formPopup.classList.add('popup');
@@ -113,6 +120,7 @@ async function fetchPersons() {
             // Display in the list
             displayPersonsList();
             destroyPopup(formPopup)
+            table.dispatchEvent(new CustomEvent('updateList'));
         })
 
         // Remove form by clicking the cancel button
@@ -137,47 +145,65 @@ async function fetchPersons() {
     }
 
     const deleteList = (idToDelete) => {
-     const personsToKeep = persons.filter(person => person.id !== idToDelete);
-            let deleteContainerPopup = document.createElement('div');
-            deleteContainerPopup.classList.add('popup');
-            deleteContainerPopup.insertAdjacentHTML('afterbegin', `
+        const personsToKeep = persons.filter(person => person.id !== idToDelete);
+        let deleteContainerPopup = document.createElement('div');
+        deleteContainerPopup.classList.add('popup');
+        deleteContainerPopup.insertAdjacentHTML('afterbegin', `
             <div class="delete_container bg-warning">
-				<p class="text-warning">
-					Are you sure you want to delete
+				<p class="warning">
+					Are you sure you want to delete?
 				</p>
 				<button type="button" name="confirm" class="confirm_delete"> Yes</button>
 				<button type="button" name="cancel" class="cancel_delete">Not yet</button>
             </div>`);
-            document.body.appendChild(deleteContainerPopup)
-            deleteContainerPopup.classList.add("open");
-        
+        document.body.appendChild(deleteContainerPopup)
+        deleteContainerPopup.classList.add("open");
+
 
         // Look for the confirm delete button and delete it
-      
+
         deleteContainerPopup.addEventListener("click", (e) => {
             e.preventDefault()
             const confirmDeleteButton = e.target.closest("button.confirm_delete");
-    
             if (confirmDeleteButton) {
                 persons = personsToKeep;
                 displayPersonsList(persons);
                 destroyPopup(deleteContainerPopup);
+                table.dispatchEvent(new CustomEvent('updateList'));
             }
         })
 
         // Cancel if the user doesn't wanna delete yet
-        
         deleteContainerPopup.addEventListener("click", (e) => {
             e.preventDefault()
             const cancelDeleteButton = e.target.closest("button.cancel_delete");
-    
             if (cancelDeleteButton) {
                 destroyPopup(deleteContainerPopup);
             }
         })
+
+        table.dispatchEvent(new CustomEvent('updateList'));
+
     }
+
+    // Save in the local storage
+    const mirrorToLocalStorage = () => {
+        localStorage.setItem('persons', JSON.stringify(persons));
+    }
+
+    const initLocalStorage = () => {
+        const personListString = localStorage.getItem('persons');
+        const personsList = JSON.parse(personListString);
+        if (personsList.length) {
+          
+        }
+
+        table.dispatchEvent(new CustomEvent('updateList'));
+    };
 
     window.addEventListener("click", deletePerson);
     window.addEventListener("click", editPerson);
+    table.addEventListener("updateList", mirrorToLocalStorage);
+    initLocalStorage();
 }
 fetchPersons();
