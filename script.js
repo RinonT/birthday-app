@@ -18,8 +18,26 @@ async function fetchPersons() {
 
     //get the array from ls
     const generatePersonHtml = (personList) => {
-        let today = new Date();
-        let date = today.getDate();  
+        // // To get the date
+        // let today = new Date();
+        // let date = today.getDate(); 
+        
+        // Calcule the date
+        // let today = new Date()
+        // let past = new Date(2020,05,01) // remember this is equivalent to 06 01 2010
+//dates in js are counted from 0, so 05 is june
+
+function calcDate(date1,date2) {
+    var diff = Math.floor(date1.getTime() - date2.getTime());
+    var day = 1000 * 60 * 60 * 24;
+
+    var days = Math.floor(diff/day); 
+    var message = days;
+    return message;
+    }
+ 
+const  myday = calcDate(new Date(2020,05,01))
+    console.log(myday)  
         return personList.map(data =>
             `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
@@ -31,10 +49,10 @@ async function fetchPersons() {
                   ${data.lastName} 
                 </span>
                 <span class="date d-block">
-                   Turns on the ${new Date(data.birthday).toLocaleString('en-GB', { hour12:false })}
+                   Turns on the ${new Date(data.birthday).toLocaleDateString()}
                 </span>
             </td>
-            <td class="days">${date}</td>
+            <td class="days"></td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -85,10 +103,6 @@ async function fetchPersons() {
     function editPersonPopup(id) {
         const personToEdit = persons.find(person => person.id == id);
         // Create the form element
-        console.log(id);
-
-        console.log(personToEdit)
-
         let formPopup = document.createElement('form');
         formPopup.classList.add('popup');
         formPopup.insertAdjacentHTML('afterbegin', `
@@ -159,9 +173,7 @@ async function fetchPersons() {
         document.body.appendChild(deleteContainerPopup)
         deleteContainerPopup.classList.add("open");
 
-
         // Look for the confirm delete button and delete it
-
         deleteContainerPopup.addEventListener("click", (e) => {
             e.preventDefault()
             const confirmDeleteButton = e.target.closest("button.confirm_delete");
@@ -181,9 +193,7 @@ async function fetchPersons() {
                 destroyPopup(deleteContainerPopup);
             }
         })
-
         table.dispatchEvent(new CustomEvent('updateList'));
-
     }
 
     // Save in the local storage
@@ -191,16 +201,18 @@ async function fetchPersons() {
         localStorage.setItem('persons', JSON.stringify(persons));
     }
 
+    // restor from local storage
     const initLocalStorage = () => {
         const personListString = localStorage.getItem('persons');
         const personsList = JSON.parse(personListString);
         if (personsList.length) {
-          
+        //   persons = personsList;
+        //   displayPersonsList()
         }
-
         table.dispatchEvent(new CustomEvent('updateList'));
     };
 
+    // All event listners
     window.addEventListener("click", deletePerson);
     window.addEventListener("click", editPerson);
     table.addEventListener("updateList", mirrorToLocalStorage);
