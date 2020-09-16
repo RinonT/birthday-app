@@ -1,7 +1,7 @@
 // Grab all the necesssary elements
 const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
-
+const addList = document.querySelector(".add_list");
 // Importing the data
 const endpoint = "./people.json";
 
@@ -20,16 +20,10 @@ async function fetchPersons() {
     const generatePersonHtml = (personList) => {
         // To get the date
         const today = new Date()
-
         // This is a function that handles the date and we'll call this when mapping the object
-        const calcDate = (date1, date2) => {
-            let diff = Math.floor(date1.getTime() - date2.getTime());
-            let day = 1000 * 60 * 60 * 24;
-            let days = Math.floor(diff / day);
-            let message = days;
-
-            // Return the message
-            return message
+        function dateDiffInDays(date1, date2) {
+            // round to the nearest whole number
+            return Math.round((date2 - date1) / (1000 * 60 * 60 * 24));
         }
 
         // Show the list in the html
@@ -44,10 +38,10 @@ async function fetchPersons() {
                   ${data.lastName} 
                 </span>
                 <span class="date d-block">
-                   Turns on the ${new Date(data.birthday).toLocaleDateString()}
+                   Turns on the ${new Date(data.birthday).toLocaleString("en-US", { day: "numeric" })}th of ${new Date(data.birthday).toLocaleString("en-US", { month: "long" })}
                 </span>
             </td>
-         <td class="days">${calcDate(today, new Date(new Date(data.birthday).toLocaleDateString()))} Days</td>
+         <td class="days"> Days</td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -62,6 +56,65 @@ async function fetchPersons() {
         ).join("");
     }
 
+    // Add the list 
+    const addNewPerson = () => {
+        let addListForm = document.createElement('form');
+        addListForm.classList.add('popup');
+        addListForm.insertAdjacentHTML('afterbegin', ` 
+        <div class="container bg-primary">
+            <p> Edit the person</p>
+            <label class="d-block" for="firstname">First Name:</label>
+            <input type="text" name="firstname" id="firstname">
+            <label class="d-block" for="lastname">Last Name:</label>
+            <input type="text" name="lastname" id="lastname">
+            <label class="d-block" for="birthday"> Birthday:</label>
+            <input type="date" name="birthday" id="birthday">
+            <label class="d-block" for="picture"> Image url:</label>
+            <input type="text" name="picture" id="picture">
+            <div class="button_container">
+                <button class="submit" type="submit"> Save</button> 
+                <button class="cancel" name="cancel" type="button"> Cancel</button>
+		    </div>
+        </div>`);
+        document.body.appendChild(addListForm);
+        addListForm.classList.add("open");
+
+        // Add the list of the people
+        const addPeopleList = () => {
+            addListForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const addForm = e.target.closest(".popup");
+                const AddFirstNameInput = addForm.querySelector("#firstname").value;
+                const AddLastNameInput = addForm.querySelector("#lastname").value;
+                const AddPictureInput = addForm.querySelector("#picture").value;
+                const addBirthdayInput = addForm.querySelector("#birthday").value;
+
+                const newPerson = {
+                    "id": Date.now(),
+                    "lastName": AddLastNameInput,
+                    "firstName": AddFirstNameInput,
+                    "picture": AddPictureInput,
+                    "birthday": addBirthdayInput,
+                };
+
+                persons.push(newPerson);
+                // Create the html
+                console.log(persons);
+                const addPersonHtml = generatePersonHtml(persons);
+
+                // Append the html to the list container
+                listContainer.innerHTML = addPersonHtml;
+                // Reset the form after submitting
+                addForm.reset();
+                // Destroy it after submitting
+               destroyPopup(addForm)
+
+            })
+        }
+        addPeopleList()
+
+    }
+
     // Display the persons ' list in the html
     const displayPersonsList = () => {
         // Sorting the persons by birthday, from the soonest to the furthest
@@ -69,6 +122,7 @@ async function fetchPersons() {
         const listHtml = generatePersonHtml(sortedPersons);
         listContainer.innerHTML = listHtml;
     }
+    
     displayPersonsList();
 
     // A function that edits the person
@@ -96,7 +150,8 @@ async function fetchPersons() {
 
     // Edit the form
     function editPersonPopup(id) {
-        const personToEdit = persons.find(person => person.id == id);
+        const personToEdit = persons.find(person => person.id === id);
+        console.log(persons);
         // Create the form element
         let formPopup = document.createElement('form');
         formPopup.classList.add('popup');
@@ -208,6 +263,7 @@ async function fetchPersons() {
     };
 
     // All event listners
+    addList.addEventListener("click", addNewPerson);
     window.addEventListener("click", deletePerson);
     window.addEventListener("click", editPerson);
     table.addEventListener("updateList", mirrorToLocalStorage);
