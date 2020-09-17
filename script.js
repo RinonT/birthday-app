@@ -11,7 +11,6 @@ function wait(ms = 0) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 // Fetch the data
 async function fetchPersons() {
     const respose = await fetch(`${endpoint}?`);
@@ -43,8 +42,9 @@ async function fetchPersons() {
             // Get the day and month
             let d1 = new Date(data.birthday), day = d1.getDate(), month = d1.getMonth();
             
-            // Rank of the date; adding "st", "nd", "rd"
-            if (day == 1 || day == 11 || day == 21 || day == 31) {
+            
+            // Adding "st", "nd", "rd" depending on the number
+            if (day == 1 || day == 21 || day == 31) {
                 day = day + "st";
             } else if (day == 2 || day == 22 || day == 32) {
                 day = day + "nd";
@@ -53,19 +53,31 @@ async function fetchPersons() {
             } else {
                 day = day + "th";
             }
-            // Get the fulll converted date
+
+            // Get the full converted date
             const dateString = monthName[month] + " " + day;
             // To get the number of the days
             const oneDay = 1000 * 60 * 60 * 24;
-            // get current year 
-            const currentYear = new Date().getFullYear();
-            // Convert the birthdate
-            const birthdateConvertor = `${new Date(data.birthday).getDay() + 1}-${new Date(data.birthday).getMonth() + 1}-${currentYear}`;
-            
-            // Days ' distence between today and the birthday
-            const convertedDate = new Date(birthdateConvertor).getTime();
-            const diffDays = Math.floor((new Date() - convertedDate) / oneDay);
+            // get current year  
+            const today = new Date();
+            let birthDayYear;
+    
+            // Set a condition for the number of days untill the birthday comes
+            if(d1.getMonth() < today.getMonth()) {
+                birthDayYear = today.getFullYear() + 1;
+            } else if ( d1.getMonth() == today.getMonth() && d1.getDate() > today.getDate()) {
+                birthDayYear = today.getFullYear();
+            }
+            else if (d1.getMonth() == today.getMonth() && d1.getDate() < today.getDate()) {
+                birthDayYear = today.getFullYear() + 1;
+            } else {
+                birthDayYear = today.getFullYear();
+            }  
 
+            const birthdayDate = new Date(
+             birthDayYear, d1.getMonth(), d1.getDate());
+            const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime())/(oneDay));
+    
             // Show the list in the html
             return `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
@@ -200,7 +212,7 @@ async function fetchPersons() {
             <label class="d-block" for="lastname">Last Name:</label>
             <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
             <label class="d-block" for="birthday"> Birthday:</label>
-            <input type="text" name="birthday" id="birthday" value="${personToEdit.birthday}" required>
+            <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}" required>
             <label class="d-block" for="url"> Image url:</label>
             <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
             <div class="button_container">
