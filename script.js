@@ -1,3 +1,4 @@
+ 
 // Grab all the necesssary elements
 const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
@@ -14,8 +15,26 @@ function wait(ms = 0) {
 // Fetch the data
 async function fetchPersons() {
     const respose = await fetch(`${endpoint}?`);
-    let persons = await respose.json();
+    let data = await respose.json();
 
+    let persons = data;
+      // Save in the local storage
+      const mirrorToLocalStorage = () => {
+        localStorage.setItem('persons', JSON.stringify(persons));
+    }
+
+    // restor from local storage
+    const initLocalStorage = () => {
+        const personListString = localStorage.getItem('persons');
+        const personsList = JSON.parse(personListString);
+        if (personsList.length) {
+            persons = personsList;
+            displayPersonsList();
+        } 
+        table.dispatchEvent(new CustomEvent('updateList'));
+    };
+
+  
     //get the array from ls
     const generatePersonHtml = (personList) => {
         // To get the date
@@ -101,7 +120,6 @@ async function fetchPersons() {
                 // Create the html
                 console.log(persons);
                 const addPersonHtml = generatePersonHtml(persons);
-
                 // Append the html to the list container
                 listContainer.innerHTML = addPersonHtml;
                 // Reset the form after submitting
@@ -134,6 +152,7 @@ async function fetchPersons() {
             if (editIcon) {
                 const id = e.target.closest(".list_container").dataset.id;
                 editPersonPopup(id);
+                 console.log(e.target.closest(".list_container"))
             }
         });
     };
@@ -150,8 +169,8 @@ async function fetchPersons() {
 
     // Edit the form
     function editPersonPopup(id) {
-        const personToEdit = persons.find(person => person.id === id);
-        console.log(persons);
+        const personToEdit = persons.find(person => person.id == id);
+        console.log(personToEdit);
         // Create the form element
         let formPopup = document.createElement('form');
         formPopup.classList.add('popup');
@@ -208,7 +227,9 @@ async function fetchPersons() {
     }
 
     const deleteList = (idToDelete) => {
-        const personsToKeep = persons.filter(person => person.id !== idToDelete);
+        //(If I use double equals, it doesn't filter)
+        const personsToKeep = persons.filter(person => person.id != idToDelete);
+        
         // Show a warning before the user decides
         let deleteContainerPopup = document.createElement('div');
         deleteContainerPopup.classList.add('popup');
@@ -228,7 +249,7 @@ async function fetchPersons() {
             e.preventDefault()
             const confirmDeleteButton = e.target.closest("button.confirm_delete");
             if (confirmDeleteButton) {
-                persons = personsToKeep;
+                persons = personsToKeep; 
                 displayPersonsList(persons);
                 destroyPopup(deleteContainerPopup);
                 table.dispatchEvent(new CustomEvent('updateList'));
@@ -245,22 +266,6 @@ async function fetchPersons() {
         })
         table.dispatchEvent(new CustomEvent('updateList'));
     }
-
-    // Save in the local storage
-    const mirrorToLocalStorage = () => {
-        localStorage.setItem('persons', JSON.stringify(persons));
-    }
-
-    // restor from local storage
-    const initLocalStorage = () => {
-        const personListString = localStorage.getItem('persons');
-        const personsList = JSON.parse(personListString);
-        if (personsList.length) {
-            persons = personsList;
-            displayPersonsList()
-        }
-        table.dispatchEvent(new CustomEvent('updateList'));
-    };
 
     // All event listners
     addList.addEventListener("click", addNewPerson);
