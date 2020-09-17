@@ -1,4 +1,4 @@
- 
+
 // Grab all the necesssary elements
 const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
@@ -18,8 +18,8 @@ async function fetchPersons() {
     let data = await respose.json();
 
     let persons = data;
-      // Save in the local storage
-      const mirrorToLocalStorage = () => {
+    // Save in the local storage
+    const mirrorToLocalStorage = () => {
         localStorage.setItem('persons', JSON.stringify(persons));
     }
 
@@ -30,24 +30,28 @@ async function fetchPersons() {
         if (personsList.length) {
             persons = personsList;
             displayPersonsList();
-        } 
+        }
         table.dispatchEvent(new CustomEvent('updateList'));
     };
 
-  
+
     //get the array from ls
     const generatePersonHtml = (personList) => {
-        // To get the date
-        const today = new Date()
-        // This is a function that handles the date and we'll call this when mapping the object
-        function dateDiffInDays(date1, date2) {
-            // round to the nearest whole number
-            return Math.round((date2 - date1) / (1000 * 60 * 60 * 24));
-        }
 
         // Show the list in the html
-        return personList.map(data =>
-            `<tr data-id="${data.id}" class="list_container">
+        return personList.map(data => {
+
+            // To get the number of the days
+            const oneDay = 1000 * 60 * 60 * 24;
+            // get current year 
+            const currentYear = new Date().getFullYear();
+            // Convert the birthdate
+            const birthdateConvertor = `${new Date(data.birthday).getDay() + 1}-${new Date(data.birthday).getMonth() + 1}-${currentYear}`;
+            // Days ' distence between today and the birthday
+            const convertedDate = new Date(birthdateConvertor).getTime();
+            const diffDays = Math.floor((new Date() - convertedDate) / oneDay);
+
+            return `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
              <img src="${data.picture}" alt>
              </td>
@@ -60,7 +64,7 @@ async function fetchPersons() {
                    Turns on the ${new Date(data.birthday).toLocaleString("en-US", { day: "numeric" })}th of ${new Date(data.birthday).toLocaleString("en-US", { month: "long" })}
                 </span>
             </td>
-         <td class="days"> Days</td>
+         <td class="days"> ${diffDays} Days</td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -72,7 +76,7 @@ async function fetchPersons() {
                 </button>
             </td>
         </tr>`
-        ).join("");
+        }).join("");
     }
 
     // Add the list 
@@ -125,7 +129,7 @@ async function fetchPersons() {
                 // Reset the form after submitting
                 addForm.reset();
                 // Destroy it after submitting
-               destroyPopup(addForm)
+                destroyPopup(addForm)
 
             })
         }
@@ -140,7 +144,7 @@ async function fetchPersons() {
         const listHtml = generatePersonHtml(sortedPersons);
         listContainer.innerHTML = listHtml;
     }
-    
+
     displayPersonsList();
 
     // A function that edits the person
@@ -152,7 +156,7 @@ async function fetchPersons() {
             if (editIcon) {
                 const id = e.target.closest(".list_container").dataset.id;
                 editPersonPopup(id);
-                 console.log(e.target.closest(".list_container"))
+                console.log(e.target.closest(".list_container"))
             }
         });
     };
@@ -229,7 +233,7 @@ async function fetchPersons() {
     const deleteList = (idToDelete) => {
         //(If I use double equals, it doesn't filter)
         const personsToKeep = persons.filter(person => person.id != idToDelete);
-        
+
         // Show a warning before the user decides
         let deleteContainerPopup = document.createElement('div');
         deleteContainerPopup.classList.add('popup');
@@ -249,7 +253,7 @@ async function fetchPersons() {
             e.preventDefault()
             const confirmDeleteButton = e.target.closest("button.confirm_delete");
             if (confirmDeleteButton) {
-                persons = personsToKeep; 
+                persons = personsToKeep;
                 displayPersonsList(persons);
                 destroyPopup(deleteContainerPopup);
                 table.dispatchEvent(new CustomEvent('updateList'));
