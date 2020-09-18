@@ -1,4 +1,3 @@
-
 // Grab all the necesssary elements
 const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
@@ -27,9 +26,9 @@ async function fetchPersons() {
         const personListString = localStorage.getItem('persons');
         const personsList = JSON.parse(personListString);
         if (personsList) {
-            persons = personsList; 
+            persons = personsList;
             displayPersonsList();
-        }
+        } 
         table.dispatchEvent(new CustomEvent('updateList'));
     };
 
@@ -38,11 +37,10 @@ async function fetchPersons() {
     const generatePersonHtml = (personList) => {
         return personList.map(data => {
             const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-           
+
             // Get the day and month
-            let d1 = new Date(data.birthday), day = d1.getDate(), month = d1.getMonth();
-            
-            
+            let date = new Date(data.birthday), day = date.getDate(), month = date.getMonth();
+ 
             // Adding "st", "nd", "rd" depending on the number
             if (day == 1 || day == 21 || day == 31) {
                 day = day + "st";
@@ -56,28 +54,27 @@ async function fetchPersons() {
 
             // Get the full converted date
             const dateString = monthName[month] + " " + day;
+            
             // To get the number of the days
             const oneDay = 1000 * 60 * 60 * 24;
             // get current year  
             const today = new Date();
             let birthDayYear;
-    
+
             // Set a condition for the number of days untill the birthday comes
-            if(d1.getMonth() < today.getMonth()) {
+            if (date.getMonth() < today.getMonth()) {
                 birthDayYear = today.getFullYear() + 1;
-            } else if ( d1.getMonth() == today.getMonth() && d1.getDate() > today.getDate()) {
+            } else if (date.getMonth() == today.getMonth() && date.getDate() > today.getDate()) {
                 birthDayYear = today.getFullYear();
             }
-            else if (d1.getMonth() == today.getMonth() && d1.getDate() < today.getDate()) {
+            else if (date.getMonth() == today.getMonth() && date.getDate() < today.getDate()) {
                 birthDayYear = today.getFullYear() + 1;
             } else {
                 birthDayYear = today.getFullYear();
-            }  
+            }
 
-            const birthdayDate = new Date(
-             birthDayYear, d1.getMonth(), d1.getDate());
-            const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime())/(oneDay));
-    
+            const birthdayDate = new Date( birthDayYear, date.getMonth(), date.getDate());
+            const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
             // Show the list in the html
             return `<tr data-id="${data.id}" class="list_container">
             <td scope="row">
@@ -92,7 +89,7 @@ async function fetchPersons() {
                    Turns on the ${dateString}
                 </span>
             </td>
-         <td class="days">${diffDays} Days</td>
+            <td class="days">${diffDays} days</td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -105,9 +102,19 @@ async function fetchPersons() {
             </td>
         </tr>`
         }).join("");
+        
     }
 
-    // Add the list 
+    // Display the persons ' list in the html
+    const displayPersonsList = () => {  
+       const listHtml = generatePersonHtml(persons);
+       listContainer.innerHTML = listHtml;
+       table.dispatchEvent(new CustomEvent('updateList'));
+   }
+
+   displayPersonsList();
+
+     // Add the list 
     const addNewPerson = () => {
         let addListForm = document.createElement('form');
         addListForm.classList.add('popup');
@@ -129,7 +136,7 @@ async function fetchPersons() {
         </div>`);
         document.body.appendChild(addListForm);
         addListForm.classList.add("open");
-
+    
         // Add the list of the people
         const addPeopleList = () => {
             addListForm.addEventListener("submit", (e) => {
@@ -158,23 +165,12 @@ async function fetchPersons() {
                 // Destroy it after submitting
                 destroyPopup(addForm)
                 table.dispatchEvent(new CustomEvent('updateList'));
-
-            })
+            });
         }
+
         addPeopleList()
-
     }
-
-    // Display the persons ' list in the html
-    const displayPersonsList = () => {
-        // Sorting the persons by birthday, from the soonest to the furthest
-        const sortedPersons = persons.sort((person1, person2) => person2.birthday - person1.birthday);
-        const listHtml = generatePersonHtml(sortedPersons);
-        listContainer.innerHTML = listHtml;
-    }
-
-    displayPersonsList();
-
+ 
     // A function that edits the person
     const editPerson = (e) => {
         // Open the modal 
@@ -282,8 +278,8 @@ async function fetchPersons() {
                 persons = personsToKeep;
                 displayPersonsList(persons);
                 destroyPopup(deleteContainerPopup);
+                table.dispatchEvent(new CustomEvent('updateList'));
             }
-            table.dispatchEvent(new CustomEvent('updateList'));
 
         })
 
