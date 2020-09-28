@@ -1,49 +1,7 @@
-// Grab all the necesssary elements
-const table = document.querySelector("table");
-const listContainer = document.querySelector(".contents_container");
-const addList = document.querySelector(".add_list");
-const filterByNameInput = document.querySelector("#filterByName");
-const selectByMonth = document.querySelector("#select_month");
-const resetFilterButton = document.querySelector('#reset_filter');
+import { table, listContainer, addList, filterByNameInput, selectByMonth, resetFilterButton, endpoint} from "./elements.js";
+import { htmlGenerator } from "./html_generator.js";
+import { wait } from "./utils.js";
 
-// Importing the data
-const endpoint = "./people.json";
-
-// This is reussable wait function that we can always use when we wanna wait before firing sth
-function wait(ms = 0) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// Generate the html
-const htmlGenerator = (list) => {
-    return list.map(person =>
-        `<tr data-id="${person.id}" class="list_container">
-   <td scope="row">
-    <img src="${person.picture}" alt>
-    </td>
-   <td class="persons_name">
-       <span class="name d-block">
-         ${person.firstName}
-         ${person.lastName} 
-       </span>
-       <span class="date d-block">
-          Turns on the ${person.date}
-       </span>
-   </td>
-   <td class="days">${person.days} days</td>
-   <td> 
-       <button class="edit bg-primary text-white" type="button">
-           Edit
-       </button>  
-   </td>
-   <td class="delete">
-       <button class="delete_btn text-danger">
-           Delete
-       </button>
-   </td>
-</tr>`
-    ).join("");
-}
 // Fetch the data
 async function fetchPersons() {
     const respose = await fetch(`${endpoint}?`);
