@@ -2,6 +2,9 @@
 const table = document.querySelector("table");
 const listContainer = document.querySelector(".contents_container");
 const addList = document.querySelector(".add_list");
+const filterByNameInput = document.querySelector("#filterByName");
+const selectByMonth = document.querySelector("#select_month");
+
 // Importing the data
 const endpoint = "./people.json";
 
@@ -10,6 +13,36 @@ function wait(ms = 0) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Generate the html
+const htmlGenerator = (list) => {
+    return list.map(person =>
+        `<tr data-id="${person.id}" class="list_container">
+   <td scope="row">
+    <img src="${person.picture}" alt>
+    </td>
+   <td class="persons_name">
+       <span class="name d-block">
+         ${person.firstName}
+         ${person.lastName} 
+       </span>
+       <span class="date d-block">
+          Turns on the ${person.date}
+       </span>
+   </td>
+   <td class="days">${person.days} days</td>
+   <td> 
+       <button class="edit bg-primary text-white" type="button">
+           Edit
+       </button>  
+   </td>
+   <td class="delete">
+       <button class="delete_btn text-danger">
+           Delete
+       </button>
+   </td>
+</tr>`
+    ).join("");
+}
 // Fetch the data
 async function fetchPersons() {
     const respose = await fetch(`${endpoint}?`);
@@ -35,7 +68,7 @@ async function fetchPersons() {
 
     //get the array from the list
     const displayPersonsList = () => {
-       const array = persons.map(data => {
+        const array = persons.map(data => {
             const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
             // Get the day and month
@@ -75,55 +108,53 @@ async function fetchPersons() {
 
             const birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
             const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
-            
+
             // This is an object that is used to store the person with the days and date
             const person = {
-                firstName : data.firstName,
-                lastName : data.lastName,
-                id : data.id,
-                birthday : data.birthday,
-                picture : data.picture, 
+                firstName: data.firstName,
+                lastName: data.lastName,
+                id: data.id,
+                birthday: data.birthday,
+                picture: data.picture,
                 date: dateString,
                 days: diffDays,
-              } 
-              return person;
-            });
+            }
+            return person;
+        });
 
-            
-            // Sorting people
-            const peopleSorted = array.sort(function(a, b) {
-                return a.days - b.days;
-              });
-            // Show the list in the html
-            const listHtml = peopleSorted.map(person => 
-             `<tr data-id="${person.id}" class="list_container">
-            <td scope="row">
-             <img src="${person.picture}" alt>
-             </td>
-            <td class="persons_name">
-                <span class="name d-block">
-                  ${person.firstName}
-                  ${person.lastName} 
-                </span>
-                <span class="date d-block">
-                   Turns on the ${person.date}
-                </span>
-            </td>
-            <td class="days">${person.days} days</td>
-            <td> 
-                <button class="edit bg-primary text-white" type="button">
-                    Edit
-                </button>  
-            </td>
-            <td class="delete">
-                <button class="delete_btn text-danger">
-                    Delete
-                </button>
-            </td>
-        </tr>`
-        ).join(""); 
-        listContainer.innerHTML = listHtml;
-        table.dispatchEvent(new CustomEvent('updateList'));
+        // Sorting people
+        const peopleSorted = array.sort(function (a, b) {
+            return a.days - b.days;
+        });
+
+
+        // Show the list in the html: this will be a reusabe function
+        const displayList = (object) => {
+            const listHtml = htmlGenerator(object);
+            listContainer.innerHTML = listHtml; 
+            table.dispatchEvent(new CustomEvent('updateList'));
+        }
+        // Display the sorted list in the document
+        displayList(peopleSorted);
+
+        // Filter the list by firstName and lastName
+        filterByNameInput.addEventListener("keyup", () => {
+            const searchInputValue = filterByNameInput.value;
+            // Filter the people that includes what the user types in the search input
+            let filteredList = array.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
+            // Call the function that generate the lists add pass the filtered variable in it
+            displayList(filteredList);
+        });
+
+        // Filter by month 
+        selectByMonth.addEventListener("change", () => {
+            // Get the value from the search by select styles
+            let filteredListByMonth = selectByMonth.value;
+            // Filter the people that includes what the user types in the search input
+            let filteredPeopleByMonth = array.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
+            // Call the function that generate the lists add pass the filtered variable in it
+            displayList(filteredPeopleByMonth);
+        });
     }
     // Add the list 
     const addNewPerson = () => {
@@ -304,6 +335,9 @@ async function fetchPersons() {
         })
         table.dispatchEvent(new CustomEvent('updateList'));
     }
+
+
+
 
     // All event listners
     addList.addEventListener("click", addNewPerson);

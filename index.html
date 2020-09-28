@@ -14,8 +14,28 @@
 	<header>
 		<h1>Birthday app</h1>
 	</header>
-	<div>
+	<div class="add_list_container">
 		<button class="add_list" type="button">Add List</button>
+	</div>
+	<div class="filter_list_container">
+		<label class="d-block" for="filterByName">Filter by name:</label>
+		<input type="text" name="filterByName" id="filterByName">
+		<label class="d-block" for="select_month">Select by month:</label>
+		<select name="months" id="select_month">
+			<option value="months" label="All months">
+			<option value="Jan" label="January">
+			<option value="Feb" label="February">
+			<option value="Mar" label="Mars">
+			<option value="Apr" label="April">
+			<option value="Mey" label="Mey">
+			<option value="Jun" label="June">
+			<option value="July" label="July">
+			<option value="Aug" label="August">
+			<option value="Sep" label="September">
+			<option value="Oct" label="October">
+			<option value="Nov" label="November">
+			<option value="Dec" label="December">
+		</select>
 	</div>
 	<table class="table table-dark">
 		<thead>
@@ -44,7 +64,7 @@
 			</tr>
 		</tbody>
 	</table>
-	 
+
 	<script src="script.js" type="module"></script>
 </body>
 

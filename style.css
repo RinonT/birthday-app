@@ -71,3 +71,13 @@ button {
 	background-color: grey;
 	color: white;
 }
+
+.filter_list_container {
+	display: flex;
+}
+
+.filter_list_container input,
+.filter_list_container select {
+	margin-bottom: 16px;
+	margin-right: 16px;
+}
