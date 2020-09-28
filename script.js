@@ -69,9 +69,9 @@ async function fetchPersons() {
 
     //get the array from the list
     const displayPersonsList = () => {
-        let array = persons.map(data => {
+        let array = persons.map(data => { 
+            // Store all the months in a variable
             const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
             // Get the day and month
             let date = new Date(data.birthday), day = date.getDate(), month = date.getMonth();
 
