@@ -111,7 +111,7 @@ async function fetchPersons() {
             const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
 
             // This is an object that is used to store the person with the days and date
-            const person = {
+            const newPerson = {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 id: data.id,
@@ -120,7 +120,7 @@ async function fetchPersons() {
                 date: dateString,
                 days: diffDays,
             }
-            return person;
+            return newPerson;
         });
 
         // Sorting people
