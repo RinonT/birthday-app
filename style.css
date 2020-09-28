@@ -10,7 +10,10 @@ h1 {
 	margin-top: 16px;
 	color: rgba(0, 0, 255, 0.5);
 }
- 
+tr:nth-child(even) {
+	background-color: rgba(61, 43, 226, 0.651);
+}
+
 td {
 	font-size: 24px;
 }

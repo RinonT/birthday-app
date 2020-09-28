@@ -28,19 +28,19 @@ async function fetchPersons() {
         if (personsList) {
             persons = personsList;
             displayPersonsList();
-        } 
+        }
         table.dispatchEvent(new CustomEvent('updateList'));
     };
 
 
-    //get the array from ls
-    const generatePersonHtml = (personList) => {
-        return personList.map(data => {
+    //get the array from the list
+    const displayPersonsList = () => {
+       const array = persons.map(data => {
             const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
             // Get the day and month
             let date = new Date(data.birthday), day = date.getDate(), month = date.getMonth();
- 
+
             // Adding "st", "nd", "rd" depending on the number
             if (day == 1 || day == 21 || day == 31) {
                 day = day + "st";
@@ -54,7 +54,7 @@ async function fetchPersons() {
 
             // Get the full converted date
             const dateString = monthName[month] + " " + day;
-            
+
             // To get the number of the days
             const oneDay = 1000 * 60 * 60 * 24;
             // get current year  
@@ -73,23 +73,43 @@ async function fetchPersons() {
                 birthDayYear = today.getFullYear();
             }
 
-            const birthdayDate = new Date( birthDayYear, date.getMonth(), date.getDate());
+            const birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
             const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
+            
+            // This is an object that is used to store the person with the days and date
+            const person = {
+                firstName : data.firstName,
+                lastName : data.lastName,
+                id : data.id,
+                birthday : data.birthday,
+                picture : data.picture, 
+                date: dateString,
+                days: diffDays,
+              } 
+              return person;
+            });
+
+            
+            // Sorting people
+            const peopleSorted = array.sort(function(a, b) {
+                return a.days - b.days;
+              });
             // Show the list in the html
-            return `<tr data-id="${data.id}" class="list_container">
+            const listHtml = peopleSorted.map(person => 
+             `<tr data-id="${person.id}" class="list_container">
             <td scope="row">
-             <img src="${data.picture}" alt>
+             <img src="${person.picture}" alt>
              </td>
             <td class="persons_name">
                 <span class="name d-block">
-                  ${data.firstName}
-                  ${data.lastName} 
+                  ${person.firstName}
+                  ${person.lastName} 
                 </span>
                 <span class="date d-block">
-                   Turns on the ${dateString}
+                   Turns on the ${person.date}
                 </span>
             </td>
-            <td class="days">${diffDays} days</td>
+            <td class="days">${person.days} days</td>
             <td> 
                 <button class="edit bg-primary text-white" type="button">
                     Edit
@@ -101,20 +121,11 @@ async function fetchPersons() {
                 </button>
             </td>
         </tr>`
-        }).join("");
-        
+        ).join(""); 
+        listContainer.innerHTML = listHtml;
+        table.dispatchEvent(new CustomEvent('updateList'));
     }
-
-    // Display the persons ' list in the html
-    const displayPersonsList = () => {  
-       const listHtml = generatePersonHtml(persons);
-       listContainer.innerHTML = listHtml;
-       table.dispatchEvent(new CustomEvent('updateList'));
-   }
-
-   displayPersonsList();
-
-     // Add the list 
+    // Add the list 
     const addNewPerson = () => {
         let addListForm = document.createElement('form');
         addListForm.classList.add('popup');
@@ -136,7 +147,7 @@ async function fetchPersons() {
         </div>`);
         document.body.appendChild(addListForm);
         addListForm.classList.add("open");
-    
+
         // Add the list of the people
         const addPeopleList = () => {
             addListForm.addEventListener("submit", (e) => {
@@ -170,7 +181,7 @@ async function fetchPersons() {
 
         addPeopleList()
     }
- 
+
     // A function that edits the person
     const editPerson = (e) => {
         // Open the modal 
