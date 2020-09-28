@@ -4,6 +4,7 @@ const listContainer = document.querySelector(".contents_container");
 const addList = document.querySelector(".add_list");
 const filterByNameInput = document.querySelector("#filterByName");
 const selectByMonth = document.querySelector("#select_month");
+const resetFilterButton = document.querySelector('#reset_filter');
 
 // Importing the data
 const endpoint = "./people.json";
@@ -68,7 +69,7 @@ async function fetchPersons() {
 
     //get the array from the list
     const displayPersonsList = () => {
-        const array = persons.map(data => {
+        let array = persons.map(data => {
             const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
             // Get the day and month
@@ -139,7 +140,7 @@ async function fetchPersons() {
 
         // Filter the list by firstName and lastName
         filterByNameInput.addEventListener("keyup", () => {
-            const searchInputValue = filterByNameInput.value;
+            const searchInputValue = filterByNameInput.value; 
             // Filter the people that includes what the user types in the search input
             let filteredList = array.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
             // Call the function that generate the lists add pass the filtered variable in it
@@ -154,6 +155,12 @@ async function fetchPersons() {
             let filteredPeopleByMonth = array.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
             // Call the function that generate the lists add pass the filtered variable in it
             displayList(filteredPeopleByMonth);
+        });
+
+        //Reset the filter by the reset filter button
+        resetFilterButton.addEventListener("click", () => {
+           // Just call the function with the html
+            displayList(peopleSorted);
         });
     }
     // Add the list 
@@ -199,9 +206,10 @@ async function fetchPersons() {
 
                 persons.push(newPerson);
                 // Create the html 
-                const addPersonHtml = generatePersonHtml(persons);
+                const addPersonHtml = htmlGenerator(persons);
                 // Append the html to the list container
                 listContainer.innerHTML = addPersonHtml;
+                displayPersonsList();
                 // Reset the form after submitting
                 addForm.reset();
                 // Destroy it after submitting
