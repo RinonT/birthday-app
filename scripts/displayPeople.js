@@ -41,8 +41,11 @@ export const displayPersonsList = () => {
             birthDayYear = today.getFullYear();
         }
 
-        const birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
-        const diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
+        let birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
+        let diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
+
+        // Add day with the number of the days if it is less than 2 and days if greater than 1
+         
 
         // This is an object that is used to store the person with the days and date
         const newPerson = {

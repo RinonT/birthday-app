@@ -1,7 +1,7 @@
 // Generate the html
 export const htmlGenerator = (list) => {
     return list.map(person =>
-        `<tr data-id="${person.id}" class="list_container">
+ `<tr data-id="${person.id}" class="list_container">
    <td scope="row">
     <img src="${person.picture}" alt>
     </td>
@@ -14,7 +14,7 @@ export const htmlGenerator = (list) => {
           Turns on the ${person.date}
        </span>
    </td>
-   <td class="days">${person.days} days</td>
+   <td class="days"> ${person.days > 1 ? `After ${person.days}` + " days" : person.days == 0 ? "That's today" : "Tomorrow"}</td>
    <td> 
        <button class="edit bg-primary text-white" type="button">
            Edit
