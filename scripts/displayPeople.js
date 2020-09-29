@@ -1,5 +1,5 @@
 import { persons } from "../script.js";
-import { listContainer, filterForm, filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
+import { filterForm, filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
 import { displayList } from "./utils.js";  
 
 export let newPeopleArray; 
