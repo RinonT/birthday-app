@@ -1,10 +1,10 @@
 import { persons } from "../script.js";
-import {filterForm, filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
-import { displayList } from "./utils.js"; 
+import { listContainer, filterForm, filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
+import { displayList } from "./utils.js";  
 
-export let array; 
+export let newPeopleArray; 
 export const displayPersonsList = () => {
-     array = persons.map(data => { 
+     newPeopleArray = persons.map(data => { 
         // Store all the months in a variable
         const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         // Get the day and month
@@ -51,7 +51,7 @@ export const displayPersonsList = () => {
             lastName: data.lastName,
             id: data.id,
             birthday: data.birthday,
-            picture: data.picture,
+            picture: data.picture, 
             date: dateString,
             days: diffDays,
         }
@@ -59,7 +59,7 @@ export const displayPersonsList = () => {
     });
 
     // Sorting people
-    const peopleSorted = array.sort(function (a, b) {
+    const sortedPersons = newPeopleArray.sort(function (a, b) {
         return a.days - b.days;
     });
 
@@ -69,9 +69,10 @@ export const displayPersonsList = () => {
         filterByNameInput.addEventListener("keyup", () => {
             const searchInputValue = filterByNameInput.value; 
             // Filter the people that includes what the user types in the search input
-            let filteredList = array.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
-            // Call the function that generate the lists add pass the filtered variable in it
-            displayList(filteredList);
+            let filteredListByName = newPeopleArray.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
+            // Call the function that generate the lists add pass the filtered variable in it 
+              displayList(filteredListByName);
+             
         });
         
         // Filter by month 
@@ -79,21 +80,22 @@ export const displayPersonsList = () => {
             // Get the value from the search by select styles
             let filteredListByMonth = selectByMonth.value;
             // Filter the people that includes what the user types in the search input
-            let filteredPeopleByMonth = array.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
+            let filteredPeopleByMonth = newPeopleArray.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
             // Call the function that generate the lists add pass the filtered variable in it
             displayList(filteredPeopleByMonth);
+            
         });
         
         //Reset the filter by the reset filter button
         resetFilterButton.addEventListener("click", () => {
            // Just call the function with the html
            filterForm.reset();
-           displayList(peopleSorted);
+           displayList(sortedPersons);
         });
         }
     fiterListsFunction()
     // Display the sorted list in the document
-    displayList(peopleSorted);
+    displayList(sortedPersons);
 
     }
 
