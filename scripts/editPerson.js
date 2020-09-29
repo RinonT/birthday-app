@@ -25,7 +25,7 @@ function editPersonPopup(id) {
     formPopup.classList.add('popup');
     formPopup.insertAdjacentHTML('afterbegin', `
     <div class="container bg-primary">
-        <p> Edit the person</p>
+        <h3> Edit the person</h3>
         <label class="d-block" for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" value="${personToEdit.firstName}" required>
         <label class="d-block" for="lastname">Last Name:</label>

@@ -15,7 +15,10 @@
 		<h1>Birthday app</h1>
 	</header>
 	<form class="filter_list_container">
-		<label class="d-block" for="filterByName">Filter by name:</label>
+		<div class="add_list_container">
+			<button class="add_list" type="button">Add List</button>
+		</div>
+		<label class="d-block filter_by_name" for="filterByName">Filter by name:</label>
 		<input type="text" name="filterByName" id="filterByName">
 		<select name="months" id="select_month">
 			<option value="months" label="All months">
@@ -34,9 +37,6 @@
 		</select>
 		<div class="button_container">
 			<button type="button" class="reset_filter" id="reset_filter"> Reset filters</button>
-		</div>
-		<div class="add_list_container">
-			<button class="add_list" type="button">Add List</button>
 		</div>
 	</form>
 	<table class="table table-dark">

@@ -10,7 +10,7 @@ export const addNewPerson = (e) => {
     addListForm.classList.add('popup');
     addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container bg-primary">
-        <p> Edit the person</p>
+        <h3> Add the list</h3>
         <label class="d-block" for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname">
         <label class="d-block" for="lastname">Last Name:</label>

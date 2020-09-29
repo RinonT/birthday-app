@@ -33,7 +33,15 @@ td {
 	pointer-events: none;
 	opacity: 0;
 }
- 
+
+input {
+	outline: none;
+}
+
+input:focus {
+ border-color: blue;
+}
+
 .open {
 	opacity: 1;
 	pointer-events: all;
@@ -65,7 +73,7 @@ button {
 }
 
 .add_list_container {
-	 margin-left: 48px;
+	 margin-right: 48px;
 }
 
 .add_list {
@@ -75,6 +83,11 @@ button {
 	color: white;
 }
 
+.add_list:hover {
+	background-color: blue;
+	border-color: red;
+	font-weight: bold;
+}
 .filter_list_container {
 	display: flex;
 }
@@ -84,3 +97,7 @@ button {
 	margin-bottom: 16px;
 	margin-right: 16px;
 }
+
+label {
+	font-size: 24px;
+} 
