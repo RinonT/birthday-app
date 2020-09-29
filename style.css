@@ -64,10 +64,13 @@ button {
 	color: white;
 }
 
+.add_list_container {
+	 margin-left: 48px;
+}
+
 .add_list {
 	margin-bottom: 16px;
-	margin-left: 8px;
-	padding: 16px;
+	margin-left: 8px; 
 	background-color: grey;
 	color: white;
 }

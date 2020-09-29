@@ -14,7 +14,7 @@ export const htmlGenerator = (list) => {
           Turns on the ${person.date}
        </span>
    </td>
-   <td class="days"> ${person.days > 1 ? `After ${person.days}` + " days" : person.days == 0 ? "That's today" : "Tomorrow"}</td>
+   <td class="days"> ${person.days > 1 ? `After ${person.days}` + " days" : person.days == 0 ? "That's today" : person.days == 1 ? "Tomorrow" : "Invalid"}</td>
    <td> 
        <button class="edit bg-primary text-white" type="button">
            Edit

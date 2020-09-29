@@ -3,8 +3,9 @@ import { displayPersonsList } from "./scripts/displayPeople.js";
 import { destroyPopup } from "./scripts/utils.js";
 import { addNewPerson } from "./scripts/addPerson.js";
 import { editPerson } from "./scripts/editPerson.js"; 
-
+ 
 export let persons = [];
+export let array; 
 
 // Fetch the data
 async function fetchPersons() {
@@ -22,10 +23,10 @@ async function fetchPersons() {
         const personListString = localStorage.getItem('persons');
         const personsList = JSON.parse(personListString);
         if (personsList) {
-            persons = personsList;
+            persons = personsList;  
             displayPersonsList();
             table.dispatchEvent(new CustomEvent('updateList'));
-        }
+        } 
     };
 
 

@@ -2,10 +2,10 @@ import { persons } from "../script.js";
 import { table, listContainer } from "./elements.js";
 import { htmlGenerator } from "./html_generator.js";
 import { displayPersonsList } from "./displayPeople.js";
-import { destroyPopup } from "./utils.js";
+import { destroyPopup } from "./utils.js"; 
 
 // Add the list 
-export const addNewPerson = () => {
+export const addNewPerson = (e) => {
     let addListForm = document.createElement('form');
     addListForm.classList.add('popup');
     addListForm.insertAdjacentHTML('afterbegin', ` 
@@ -28,7 +28,7 @@ export const addNewPerson = () => {
     addListForm.classList.add("open");
 
     // Add the list of the people
-    const addPeopleList = () => {
+    const addPeopleList = (e) => {
         addListForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const addForm = e.target.closest(".popup");
@@ -56,7 +56,17 @@ export const addNewPerson = () => {
             // Destroy it after submitting
             destroyPopup(addForm)
             table.dispatchEvent(new CustomEvent('updateList'));
+            
         });
+         
     }
     addPeopleList()
+    
+    // Remove the form by clicking the cancel button
+    if (addListForm.cancel) {
+        const cancelAddButton = addListForm.cancel;
+        cancelAddButton.addEventListener('click', () => {
+            destroyPopup(addListForm);
+        });
+    }
 }
