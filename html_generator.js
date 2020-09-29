@@ -1,4 +1,3 @@
-
 // Generate the html
 export const htmlGenerator = (list) => {
     return list.map(person =>

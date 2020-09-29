@@ -11,3 +11,13 @@ export function wait(ms = 0) {
     listContainer.innerHTML = listHtml; 
     table.dispatchEvent(new CustomEvent('updateList'));
 }
+
+   // Distroy the popup while canceling or save
+   export async function destroyPopup(popup) {
+    popup.classList.remove('open');
+    await wait(500);
+    // remove the popup from the DOM
+    popup.remove();
+    // remove it from the js memory
+    popup = null;
+}
