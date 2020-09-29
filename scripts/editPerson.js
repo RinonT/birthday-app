@@ -1,4 +1,4 @@
-import { persons } from "./script.js";
+import { persons } from "../script.js";
 import { table } from "./elements.js";
 import { destroyPopup } from "./utils.js";
 import { displayPersonsList } from "./displayPeople.js";

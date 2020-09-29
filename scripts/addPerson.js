@@ -1,4 +1,4 @@
-import { persons } from "./script.js";
+import { persons } from "../script.js";
 import { table, listContainer } from "./elements.js";
 import { htmlGenerator } from "./html_generator.js";
 import { displayPersonsList } from "./displayPeople.js";

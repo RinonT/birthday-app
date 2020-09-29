@@ -1,5 +1,5 @@
-import { persons } from "./script.js";
-import {filterByNameInput, selectByMonth, resetFilterButton, endpoint} from "./elements.js";
+import { persons } from "../script.js";
+import {filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
 import { displayList } from "./utils.js";
 
 export const displayPersonsList = () => {

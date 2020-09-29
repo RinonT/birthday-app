@@ -1,8 +1,8 @@
-import { table, addList, endpoint } from "./elements.js";
-import { displayPersonsList } from "./displayPeople.js";
-import { destroyPopup } from "./utils.js";
-import { addNewPerson } from "./addPerson.js";
-import { editPerson } from "./editPerson.js"; 
+import { table, addList, endpoint } from "./scripts/elements.js";
+import { displayPersonsList } from "./scripts/displayPeople.js";
+import { destroyPopup } from "./scripts/utils.js";
+import { addNewPerson } from "./scripts/addPerson.js";
+import { editPerson } from "./scripts/editPerson.js"; 
 
 export let persons = [];
 
@@ -47,7 +47,6 @@ async function fetchPersons() {
     const deleteList = (idToDelete) => {
         //(If I use double equals, it doesn't filter)
         const personsToKeep = persons.filter(person => person.id != idToDelete);
-        console.log(personsToKeep);
         // Show a warning before the user decides
         let deleteContainerPopup = document.createElement('div');
         deleteContainerPopup.classList.add('popup');
