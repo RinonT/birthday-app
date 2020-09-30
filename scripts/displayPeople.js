@@ -61,7 +61,7 @@ export const displayPersonsList = () => {
             id: data.id,
             birthday: data.birthday,
             picture: data.picture, 
-            ages: age,
+            ages: age + 1,
             date: dateString,
             days: diffDays,
         }
