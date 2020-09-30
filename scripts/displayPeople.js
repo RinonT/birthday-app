@@ -44,7 +44,16 @@ export const displayPersonsList = () => {
 
         let birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
         let diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
-
+        
+        // A function that calculates the age each person
+        function calculateAge(dob) { 
+            let diffMs = Date.now() - dob.getTime();
+            let ageDt = new Date(diffMs); 
+            return Math.abs(ageDt.getUTCFullYear() - 1970);
+        }
+        // Assign the age in a variable so that we can use it with the object
+        let age = calculateAge(new Date(data.birthday));
+    
         // This is an object that is used to store the person with the days and date
         const newPerson = {
             firstName: data.firstName,
@@ -52,6 +61,7 @@ export const displayPersonsList = () => {
             id: data.id,
             birthday: data.birthday,
             picture: data.picture, 
+            ages: age,
             date: dateString,
             days: diffDays,
         }
