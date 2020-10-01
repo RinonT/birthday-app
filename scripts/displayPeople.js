@@ -29,21 +29,6 @@ export const displayPersonsList = () => {
         // get current year  
         const today = new Date();
         let birthDayYear;
-
-        // Set a condition for the number of days untill the birthday comes
-        if (date.getMonth() < today.getMonth()) {
-            birthDayYear = today.getFullYear() + 1;
-        } else if (date.getMonth() == today.getMonth() && date.getDate() > today.getDate()) {
-            birthDayYear = today.getFullYear();
-        }
-        else if (date.getMonth() == today.getMonth() && date.getDate() < today.getDate()) {
-            birthDayYear = today.getFullYear() + 1;
-        } else {
-            birthDayYear = today.getFullYear();
-        }
-
-        let birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
-        let diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
         
         // A function that calculates the age each person
         function calculateAge(dob) { 
@@ -53,6 +38,25 @@ export const displayPersonsList = () => {
         }
         // Assign the age in a variable so that we can use it with the object
         let age = calculateAge(new Date(data.birthday));
+     
+        // Set a condition for the number of days untill the birthday comes
+        if (date.getMonth() < today.getMonth()) {
+            birthDayYear = today.getFullYear() + 1;
+            age++;
+        } else if (date.getMonth() == today.getMonth() && date.getDate() > today.getDate()) {
+            birthDayYear = today.getFullYear();
+            age = age;
+        }
+        else if (date.getMonth() == today.getMonth() && date.getDate() < today.getDate()) {
+            birthDayYear = today.getFullYear() + 1;
+            age++;
+        } else {
+            birthDayYear = today.getFullYear();
+             
+        }
+
+        let birthdayDate = new Date(birthDayYear, date.getMonth(), date.getDate());
+        let diffDays = Math.ceil((birthdayDate.getTime() - today.getTime()) / (oneDay));
     
         // This is an object that is used to store the person with the days and date
         const newPerson = {
@@ -61,7 +65,7 @@ export const displayPersonsList = () => {
             id: data.id,
             birthday: data.birthday,
             picture: data.picture, 
-            ages: age + 1,
+            ages: age,
             date: dateString,
             days: diffDays,
         }

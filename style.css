@@ -1,12 +1,14 @@
 body {
 	background-color: #faeee7;
 }
+
 header {
 	width: 100%;
 	display: flex;
 	justify-content: center; 
 	margin-bottom: 64px;
 }
+
 h1 {
 	margin-top: 16px;
 	color: #33272a;
