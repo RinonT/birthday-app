@@ -71,6 +71,7 @@ export const displayPersonsList = () => {
         }
         return newPerson;
     });
+     
 
     // Sorting people
     const sortedPersons = newPeopleArray.sort(function (a, b) {
