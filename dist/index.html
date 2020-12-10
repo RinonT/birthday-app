@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TEST</title>
+	<title>Birthday app</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/style.e308ff8e.css">
 <script src="/style.e308ff8e.js"></script></head>
@@ -13,13 +13,45 @@
 	<header>
 		<h1>Birthday app</h1>
 	</header>
+	<form class="filter_list_container">
+		<div class="filter_container">
+			<label class="filter_by_name" for="filterByName">
+				<span>Filter by name: </span>
+				<input type="text" name="filterByName" placeholder="Type a name" id="filterByName">
+			</label>
+			<label class="filter_by_month" for="select_month">
+				<span>Filter by month: </span>
+				<select name="months" id="select_month">
+					<option value="months" label="All months">
+					</option><option value="Jan" label="January">
+					</option><option value="Feb" label="February">
+					</option><option value="Mar" label="Mars">
+					</option><option value="Apr" label="April">
+					</option><option value="Mey" label="Mey">
+					</option><option value="Jun" label="June">
+					</option><option value="July" label="July">
+					</option><option value="Aug" label="August">
+					</option><option value="Sep" label="September">
+					</option><option value="Oct" label="October">
+					</option><option value="Nov" label="November">
+					</option><option value="Dec" label="December">
+				</option></select>
+			</label>
+			<div class="button_container">
+				<button type="button" class="reset_filter" id="reset_filter"> Reset filters</button>
+			</div>
+		</div>
+		<div class="add_list_container">
+			<button class="add_list" type="button">Add List</button>
+		</div>
+	</form>
 	<table class="table table-dark">
 		<thead>
 			<tr>
 				<th class="h2" scope="col">Images</th>
-				<th class="h2" scope="col">Name with date</th>
-				<th class="h2" scope="col">days</th>
-				<th class="h2" scope="col">Edit</th>
+				<th class="h2" scope="col">Names and the birthday</th>
+				<th class="h2" scope="col">Number of days</th>
+				<th class="h2" scope="col">Edit List</th>
 				<th class="h2" scope="col">Delete</th>
 			</tr>
 		</thead>
@@ -40,7 +72,7 @@
 			</tr>
 		</tbody>
 	</table>
-	 
+
 	<script src="/script.75da7f30.js" type="module"></script>
 </body>
 

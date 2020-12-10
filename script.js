@@ -9,12 +9,12 @@ export let array;
 
 // Fetch the data
 async function fetchPersons() {
-    const respose = await fetch(`${endpoint}?`);
+    const respose = await fetch("https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json");
     let data = await respose.json();
     persons = data;
-
+ 
     // Save in the local storage
-    const mirrorToLocalStorage = () => {
+    const mirrorToLocalStorage = () => { 
         localStorage.setItem('persons', JSON.stringify(persons));
     }
 
@@ -26,7 +26,9 @@ async function fetchPersons() {
             persons = personsList;  
             displayPersonsList();
             table.dispatchEvent(new CustomEvent('updateList'));
-        } 
+        } else {
+            persons = person;
+        }
     };
 
 
@@ -72,8 +74,7 @@ async function fetchPersons() {
                 destroyPopup(deleteContainerPopup);
                 table.dispatchEvent(new CustomEvent('updateList'));
             }
-
-        })
+        }) 
 
         // Cancel if the user doesn't wanna delete yet
         deleteContainerPopup.addEventListener("click", (e) => {

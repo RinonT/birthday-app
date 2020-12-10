@@ -1,17 +1,24 @@
 body {
-	background-color: #faeee7;
+	background-color: #D8EEFE;
+	max-width: 1114px;
+	margin-left: auto;
+	margin-right: auto;
+	/* background-color: #faeee7; */
 }
 
 header {
 	width: 100%;
 	display: flex;
-	justify-content: center; 
+	justify-content: center;
 	margin-bottom: 64px;
 }
 
 h1 {
 	margin-top: 16px;
-	color: #33272a;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 76px;
+	color: #094067;
 }
 
 tbody tr:nth-child(odd) {
@@ -20,7 +27,7 @@ tbody tr:nth-child(odd) {
 }
 
 tr:nth-child(even) {
-	background-color:  #ffc6c7;
+	background-color: #ffc6c7;
 	color: #594a4e;
 }
 
@@ -31,8 +38,8 @@ td {
 .popup {
 	display: flex;
 	flex-direction: column;
-    margin: 16px;
-    background: hsla(0, 0%, 30%, 0.5);
+	margin: 16px;
+	background: hsla(0, 0%, 30%, 0.5);
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
@@ -51,24 +58,23 @@ input {
 }
 
 input:focus {
- border-color: blue;
+	border-color: blue;
 }
 
 .open {
 	opacity: 1;
 	pointer-events: all;
 }
- 
-.container,
-.delete_container {
-    padding: 32px;
+
+.container, .delete_container {
+	padding: 32px;
 }
 
 button {
 	font-size: 24px;
-    padding-inline-start: 16px;
+	padding-inline-start: 16px;
 	padding-inline-end: 16px;
-	border-radius: 8px; 
+	border-radius: 8px;
 }
 
 svg {
@@ -86,19 +92,18 @@ svg {
 	color: white;
 }
 
-.cancel_delete,
-.cancel {
+.cancel_delete, .cancel {
 	background-color: green;
 	color: white;
 }
 
 .add_list_container {
-	 margin-right: 48px;
+	margin-right: 48px;
 }
 
 .add_list {
 	margin-bottom: 16px;
-	margin-left: 8px; 
+	margin-left: 8px;
 	background-color: grey;
 	color: white;
 }
@@ -109,21 +114,45 @@ svg {
 	font-weight: bold;
 }
 
+.filter_container {
+	display: flex;
+}
+
 .filter_list_container {
 	display: flex;
 }
 
-.filter_list_container input,
-.filter_list_container select {
+.filter_container span {
+	font-size: 18px;
+	line-height: 21px;
+	color: #094067;
+	display: flex;
+}
+
+.filter_list_container input, .filter_list_container select {
 	margin-bottom: 16px;
 	margin-right: 16px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background: #FFFFFE;
+	border: none;
+	outline: rgba(135, 207, 235, 0.431);
+	border-radius: 5px;
+}
+
+.button_container button {
+	font-size: 18px;
+	line-height: 21px;
+	color: #FFFFFE;
+	padding-top: 12px;
+	padding-bottom: 12px;
 }
 
 label {
 	font-size: 24px;
 }
 
-.result_container { 
+.result_container {
 	display: flex;
 	flex-direction: row;
 	transform: translateX(100%);

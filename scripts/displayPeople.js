@@ -90,7 +90,7 @@ export const displayPersonsList = () => {
              
         });
         
-        // Filter by month 
+        // Filter by month  
         selectByMonth.addEventListener("change", () => {
             // Get the value from the search by select styles
             let filteredListByMonth = selectByMonth.value;
