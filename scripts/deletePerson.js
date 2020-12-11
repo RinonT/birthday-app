@@ -9,8 +9,8 @@ console.log("people");
 export const deletePerson = (e) => {
     const deleteButton = e.target.closest(".delete_btn");
     if (deleteButton) {
-        const tableRow = e.target.closest('tr');
-        const idToDelete = tableRow.dataset.id;
+        const deleteButtonContainer = e.target.closest('div.delete');
+        const idToDelete = deleteButtonContainer.dataset.id;
         deleteList(idToDelete);
     }
 }

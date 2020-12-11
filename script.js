@@ -40,8 +40,8 @@ async function fetchPersons() {
     const deletePerson = (e) => {
         const deleteButton = e.target.closest(".delete_btn");
         if (deleteButton) {
-            const tableRow = e.target.closest('tr');
-            const idToDelete = tableRow.dataset.id;
+            const buttonContainer = e.target.closest('div.delete');
+            const idToDelete = buttonContainer.dataset.id;
             deleteList(idToDelete);
         }
     }

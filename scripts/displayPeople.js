@@ -98,7 +98,6 @@ export const displayPersonsList = () => {
             let filteredPeopleByMonth = newPeopleArray.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
             // Call the function that generate the lists add pass the filtered variable in it
             displayList(filteredPeopleByMonth);
-            
         });
         
         //Reset the filter by the reset filter button

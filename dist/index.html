@@ -15,12 +15,13 @@
 	</header>
 	<form class="filter_list_container">
 		<div class="filter_container">
-			<label class="filter_by_name" for="filterByName">
-				<span>Filter by name: </span>
+			<div class="input_container">
+				<label class="filter_by_name" for="filterByName">Filter by name: </label>
 				<input type="text" name="filterByName" placeholder="Type a name" id="filterByName">
-			</label>
-			<label class="filter_by_month" for="select_month">
-				<span>Filter by month: </span>
+			</div>
+			<div class="input_container">
+
+				<label class="filter_by_month" for="select_month">Filter by month: </label>
 				<select name="months" id="select_month">
 					<option value="months" label="All months">
 					</option><option value="Jan" label="January">
@@ -36,43 +37,19 @@
 					</option><option value="Nov" label="November">
 					</option><option value="Dec" label="December">
 				</option></select>
-			</label>
-			<div class="button_container">
-				<button type="button" class="reset_filter" id="reset_filter"> Reset filters</button>
 			</div>
-		</div>
-		<div class="add_list_container">
-			<button class="add_list" type="button">Add List</button>
-		</div>
-	</form>
-	<table class="table table-dark">
-		<thead>
-			<tr>
-				<th class="h2" scope="col">Images</th>
-				<th class="h2" scope="col">Names and the birthday</th>
-				<th class="h2" scope="col">Number of days</th>
-				<th class="h2" scope="col">Edit List</th>
-				<th class="h2" scope="col">Delete</th>
-			</tr>
-		</thead>
-		<tbody class="contents_container">
-			<tr>
-				<th scope="row">My image</th>
-				<td class="persons_name">
-					<span class="name">
-						My name
-					</span>
-					<span class="date">
-						My date
-					</span>
-				</td>
-				<td class="days">days</td>
-				<td class="edit">edit</td>
-				<td class="delete">Delete</td>
-			</tr>
-		</tbody>
-	</table>
-
+			<div class="button_container">
+				<div>
+					<button type="button" class="reset_filter" id="reset_filter"> Reset filters</button>
+				</div>
+				<div class="add_list_container">
+					<button class="add_list" type="button">Add a person</button>
+				</div>
+			</div>
+	</div></form>
+	<div class="peopleList_container">
+		<div class="contents_container"></div>
+	</div>
 	<script src="/script.75da7f30.js" type="module"></script>
 </body>
 

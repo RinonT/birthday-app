@@ -1,5 +1,5 @@
  // Grab all the necesssary elements
- export const table = document.querySelector("table");
+ export const table = document.querySelector(".peopleList_container");
  export const listContainer = document.querySelector(".contents_container");
  export const addList = document.querySelector(".add_list");
  export const filterForm = document.querySelector(".filter_list_container")

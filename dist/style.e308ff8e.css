@@ -1,51 +1,45 @@
 body {
 	background-color: #D8EEFE;
-	max-width: 1114px;
+	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
-	/* background-color: #faeee7; */
 }
 
 header {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-bottom: 64px;
+	padding-top: 32px;
+	padding-left: 32px;
+	margin-bottom: 48px;
 }
 
 h1 {
 	margin-top: 16px;
 	font-weight: bold;
-	font-size: 64px;
-	line-height: 76px;
+	font-size: 32px;
+	line-height: 38px;
 	color: #094067;
 }
 
-tbody tr:nth-child(odd) {
-	background-color: #c3f0ca;
-	color: #594a4e;
+.contents_container {
+	padding: 16px;
 }
 
-tr:nth-child(even) {
-	background-color: #ffc6c7;
-	color: #594a4e;
-}
-
-td {
-	font-size: 24px;
+.list_container {
+	background-color: #FFFFFE;
+	padding: 16px;
+	border-radius: 5px;
+	margin-bottom: 16px;
 }
 
 .popup {
 	display: flex;
 	flex-direction: column;
-	margin: 16px;
+	/* margin: 16px; */
 	background: hsla(0, 0%, 30%, 0.5);
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
 	transition: all 0.25s;
 	top: 0;
-	display: grid;
 	justify-content: center;
 	align-items: center;
 	pointer-events: none;
@@ -53,6 +47,7 @@ td {
 }
 
 input {
+	width: 100%;
 	outline: none;
 	border-radius: 4px;
 }
@@ -61,19 +56,34 @@ input:focus {
 	border-color: blue;
 }
 
+select#select_month {
+	width: 100%;
+}
+
+img {
+	border-radius: 5px;
+}
+
+.filter_list_container {
+	padding-left: 16px;
+}
+
 .open {
 	opacity: 1;
 	pointer-events: all;
 }
 
 .container, .delete_container {
+	width: 80%;
 	padding: 32px;
 }
 
-button {
-	font-size: 24px;
-	padding-inline-start: 16px;
-	padding-inline-end: 16px;
+button, .filter_container input, .filter_container select {
+	font-size: 16px;
+	padding: 16px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: none;
 	border-radius: 8px;
 }
 
@@ -97,14 +107,16 @@ svg {
 	color: white;
 }
 
-.add_list_container {
-	margin-right: 48px;
-}
+ strong {
+	 color: #EF4565;
+ }
 
 .add_list {
+	font-weight: bold;
 	margin-bottom: 16px;
 	margin-left: 8px;
-	background-color: grey;
+	background-color: #EF4565;
+	border-radius: 5px;
 	color: white;
 }
 
@@ -112,40 +124,61 @@ svg {
 	background-color: blue;
 	border-color: red;
 	font-weight: bold;
+	color: #ffffff;
 }
 
 .filter_container {
 	display: flex;
+	flex-direction: column;
+	max-width: 70%;
 }
 
-.filter_list_container {
+.filter_container label {
+	display: block;
+}
+
+.button_container {
 	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
 }
 
-.filter_container span {
-	font-size: 18px;
+.reset_filter {
+	background-color: blue;
+	color: #ffffff;
+}
+
+.reset_filter:hover {
+	background-color: grey;
+	color: white;
+}
+
+.peopleList_name {
+	font-weight: 500;
+	margin-top: 12px;
+	margin-bottom: 10px;
+	font-size: 24px;
+	line-height: 28px;
+	color: #000000;
+}
+
+.peopleList_birthday.date {
+	font-size: 17px;
 	line-height: 21px;
-	color: #094067;
+	color: #5F6C7B;
+}
+
+.peopleList_edit {
 	display: flex;
+	justify-content: flex-end;
 }
 
-.filter_list_container input, .filter_list_container select {
-	margin-bottom: 16px;
-	margin-right: 16px;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	background: #FFFFFE;
-	border: none;
-	outline: rgba(135, 207, 235, 0.431);
-	border-radius: 5px;
+.peopleList_edit svg {
+	width: 36px;
 }
 
-.button_container button {
-	font-size: 18px;
-	line-height: 21px;
-	color: #FFFFFE;
-	padding-top: 12px;
-	padding-bottom: 12px;
+.edit {
+	margin-right: 32px;
 }
 
 label {
@@ -167,6 +200,65 @@ label {
 	font-size: 24px;
 	font-style: italic;
 	color: royalblue;
+}
+
+@media(min-width: 1114px) {
+	header {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 64px;
+	}
+	h1 {
+		font-size: 64px;
+		line-height: 76px;
+	}
+	.filter_container {
+		max-width: 100%;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.contents_container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.filter_list_container {
+		padding-left: 0;
+	}
+	
+	.list_container {
+		display: grid;
+		grid-template-columns: 20% 50% auto;
+	}
+	.button_container {
+		margin-top: 43px;
+	}
+
+	button#reset_filter {
+		transform: translateX(-92%);
+	}
+	.peopleList_name {
+		font-size: 36px;
+		line-height: 43px;
+		margin: 0;
+	}
+
+	.peopleList_birthday.date {
+		font-size: 24px;
+		line-height: 28px;
+	}
+
+	.peopleList_numberOfDays.days {
+		font-size: 24px;
+		line-height: 28px;
+		margin-left: 108px;
+	}
+	.edit {
+		margin-right: 16px;
+	}
+	 
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */
