@@ -14,7 +14,7 @@ header {
 	margin-bottom: 48px;
 }
 
-h1 { 
+h1 {
 	font-weight: bold;
 	font-size: 32px;
 	line-height: 38px;
@@ -34,36 +34,39 @@ h1 {
 
 .popup {
 	display: flex;
-	flex-direction: column; 
+	flex-direction: column;
 	background: rgba(255, 255, 255, 0.8);
-	width: 100vw; 
+	width: 100vw;
 	height: 100vh;
 	position: fixed;
-	top: 0; 
+	top: 0;
 	padding-top: 98px;
-	transition: all 0.25s; 
+	transition: all 0.25s;
 	justify-content: center;
 	align-items: center;
 	pointer-events: none;
 	opacity: 0;
 }
+
 .delete_container.bg-warning {
-    transform: translateY(170%);
-    -webkit-transform: translateY(170%);
-    -moz-transform: translateY(170%);
-    -ms-transform: translateY(170%);
-    -o-transform: translateY(170%);
+	transform: translateY(0%);
+	-webkit-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	-o-transform: translateY(0%);
+}
+
+.delete_container.bg-warning button{
+	 margin-right: 32px;
+	 margin-bottom: 12px;
 }
 .popup label {
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 input {
 	width: 100%;
-	padding: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 	outline: none;
 	border-radius: 4px;
 }
@@ -123,9 +126,9 @@ svg {
 	color: white;
 }
 
- strong {
-	 color: #EF4565;
- }
+strong {
+	color: #EF4565;
+}
 
 .add_list {
 	font-weight: bold;
@@ -158,13 +161,14 @@ svg {
 	justify-content: space-between;
 	margin-top: 12px;
 }
-.popup .button_container { 
+
+.popup .button_container {
 	flex-direction: column;
 }
 
-.popup .button_container button{
+.popup .button_container button {
 	font-weight: 500;
-	 margin-bottom: 12px;
+	margin-bottom: 12px;
 }
 
 .reset_filter {
@@ -233,39 +237,38 @@ label {
 		justify-content: center;
 		margin-bottom: 64px;
 	}
-
 	h1 {
-		font-size: 64px; 
+		font-size: 64px;
 	}
-
 	.filter_container {
 		max-width: 100%;
 		flex-direction: row;
 		justify-content: space-between;
 	}
-
 	.contents_container {
 		padding-left: 0;
 		padding-right: 0;
 	}
-
 	.filter_list_container {
 		padding-left: 0;
 	}
-	
 	.list_container {
 		display: grid;
 		grid-template-columns: 20% 50% auto;
 	}
+	.popup {
+		padding: 120px;
+	}
 	.button_container {
 		margin-top: 43px;
 	}
-
+	.popup .button_container {
+		margin-top: 12px;
+	}
 	button#reset_filter {
 		transform: translateX(-92%);
 		font-weight: 600;
 	}
-
 	button.submit_button {
 		background: #EF4565;
 		font-weight: 500;
@@ -273,47 +276,43 @@ label {
 		line-height: 21px;
 		color: #FFFFFE;
 	}
-
-	.popup { 
-		padding: 120px;
-	}
-
-	.popup .button_container { 
+	.popup .button_container {
 		flex-direction: row;
 		margin-bottom: 0;
 	}
-
 	.container.bg-primary {
 		background: rgba(168, 43, 226, 0.418);
 		padding: 120px;
 		padding-top: 50px;
 	}
-
+	.container.bg-primary {
+		padding-bottom: 16px;
+	}
 	.popup h3 {
 		max-width: fit-content;
 		margin-left: auto;
-		margin-right: auto; 
-		font-size: 41px;
+		margin-right: auto;
+		font-size: 24px;
 	}
-
 	.container, .delete_container {
-		width: 60%; 
+		width: 60%;
 	}
 	.delete_container.bg-warning {
-		transform: translateY(200%);
+		transform: translateY(80%);
+		-webkit-transform: translateY(80%);
+		-moz-transform: translateY(80%);
+		-ms-transform: translateY(80%);
+		-o-transform: translateY(80%);
 	}
-
 	.peopleList_name {
 		font-size: 36px;
 		line-height: 43px;
 		margin: 0;
 	}
-
 	.peopleList_birthday.date {
 		font-size: 24px;
 		line-height: 28px;
 	}
-
 	.peopleList_numberOfDays.days {
 		font-size: 24px;
 		line-height: 28px;
@@ -322,7 +321,6 @@ label {
 	.edit {
 		margin-right: 16px;
 	}
-	 
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

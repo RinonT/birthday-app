@@ -17,13 +17,14 @@ export const deletePerson = (e) => {
 const deleteList = (idToDelete) => {
     //(If I use double equals, it doesn't filter)
     const personsToKeep = people.filter(person => person.id != idToDelete);
+   const personsToDelete = people.filter(person => person.id == idToDelete);
     // Show a warning before the user decides
     let deleteContainerPopup = document.createElement('div');
     deleteContainerPopup.classList.add('popup', "delete_popup");
     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
     <div class="delete_container bg-warning">
         <p class="warning">
-            Are you sure you want to delete?
+            Are you sure you want to delete ${personsToDelete.lastName}?
         </p>
         <button type="button" name="confirm" class="confirm_delete"> Yes</button>
         <button type="button" name="cancel" class="cancel_delete">Not yet</button>
