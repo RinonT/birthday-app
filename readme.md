@@ -11,6 +11,10 @@
 - I destroy the popup by removing the class **open** from the form. This is used everywhere I have a cancel button.
 - To delete the list, I used the filter method which filters the ones that don't have the id that is passed in the condition.
 
+## My experience
+The challenge is to create an app that shows people's birthdays, enables users to edit or delete a list, and most importantly, add people to the list. This is build with vanilla js without using any library.
+
+
 ## Most challenging part
  
 - Working on the date without date-fns but just with plain js

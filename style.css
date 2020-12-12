@@ -38,7 +38,8 @@ h1 {
 	flex-direction: column; 
 	background: rgba(255, 255, 255, 0.8);
 	width: 100vw; 
-	position: absolute;
+	height: 100vh;
+	position: fixed;
 	top: 0; 
 	padding-top: 98px;
 	transition: all 0.25s; 
@@ -158,6 +159,14 @@ svg {
 	justify-content: space-between;
 	margin-top: 12px;
 }
+.popup .button_container { 
+	flex-direction: column;
+}
+
+.popup .button_container button{
+	font-weight: 500;
+	 margin-bottom: 12px;
+}
 
 .reset_filter {
 	background-color: blue;
@@ -268,6 +277,11 @@ label {
 
 	.popup { 
 		padding: 120px;
+	}
+
+	.popup .button_container { 
+		flex-direction: row;
+		margin-bottom: 0;
 	}
 
 	.container.bg-primary {
