@@ -367,13 +367,13 @@ const addNewPerson = e => {
     <div class="container bg-primary">
         <h3> Add the list</h3>
         <label class="d-block" for="firstname">First Name:</label>
-        <input type="text" name="firstname" id="firstname">
+        <input type="text" name="firstname" placeholder="first name" id="firstname">
         <label class="d-block" for="lastname">Last Name:</label>
-        <input type="text" name="lastname" id="lastname">
+        <input type="text" name="lastname" placeholder="last name" id="lastname">
         <label class="d-block" for="birthday"> Birthday:</label>
         <input type="date" name="birthday" id="birthday">
         <label class="d-block" for="picture"> Image url:</label>
-        <input type="text" name="picture" id="picture">
+        <input type="text" name="picture" placeholder="url for the profile picture" id="picture">
         <div class="button_container">
             <button class="submit" type="submit"> Save</button> 
             <button class="cancel" name="cancel" type="button"> Cancel</button>
@@ -475,7 +475,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
-            <button class="submit_button" type="submit" data-id="${id}"> Save</button>
+            <button class="submit_button" type="submit" data-id="${id}"> Save changes</button>
             <button class="cancel" name="cancel" type="button" data-id="${id}"> Cancel</button>
         </div>
     </div>`);
@@ -650,7 +650,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50121" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53669" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

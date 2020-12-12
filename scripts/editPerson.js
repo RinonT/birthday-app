@@ -35,7 +35,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
-            <button class="submit_button" type="submit" data-id="${id}"> Save</button>
+            <button class="submit_button" type="submit" data-id="${id}"> Save changes</button>
             <button class="cancel" name="cancel" type="button" data-id="${id}"> Cancel</button>
         </div>
     </div>`);

@@ -12,13 +12,13 @@ export const addNewPerson = (e) => {
     <div class="container bg-primary">
         <h3> Add the list</h3>
         <label class="d-block" for="firstname">First Name:</label>
-        <input type="text" name="firstname" id="firstname">
+        <input type="text" name="firstname" placeholder="first name" id="firstname">
         <label class="d-block" for="lastname">Last Name:</label>
-        <input type="text" name="lastname" id="lastname">
+        <input type="text" name="lastname" placeholder="last name" id="lastname">
         <label class="d-block" for="birthday"> Birthday:</label>
         <input type="date" name="birthday" id="birthday">
         <label class="d-block" for="picture"> Image url:</label>
-        <input type="text" name="picture" id="picture">
+        <input type="text" name="picture" placeholder="url for the profile picture" id="picture">
         <div class="button_container">
             <button class="submit" type="submit"> Save</button> 
             <button class="cancel" name="cancel" type="button"> Cancel</button>

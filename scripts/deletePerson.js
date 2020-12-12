@@ -1,10 +1,8 @@
 import  persons  from "../script.js";
 import { table } from "./elements.js";
 import { displayPersonsList } from "./displayPeople.js";
-import { destroyPopup } from "./utils.js";
-console.log(persons);
-let people = persons;
-console.log("people");
+import { destroyPopup } from "./utils.js"; 
+let people = persons; 
 
 export const deletePerson = (e) => {
     const deleteButton = e.target.closest(".delete_btn");
@@ -21,7 +19,7 @@ const deleteList = (idToDelete) => {
     const personsToKeep = people.filter(person => person.id != idToDelete);
     // Show a warning before the user decides
     let deleteContainerPopup = document.createElement('div');
-    deleteContainerPopup.classList.add('popup');
+    deleteContainerPopup.classList.add('popup', "delete_popup");
     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
     <div class="delete_container bg-warning">
         <p class="warning">
