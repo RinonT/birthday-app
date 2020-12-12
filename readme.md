@@ -1,5 +1,20 @@
 # Term 3 JS Project : Birthday App
+<h1 align="center">Birthday App</h1>
 
+<div align="center">
+  <h3>
+    <a href="https://countryquiz-play.netlify.app/">
+      Demo
+    </a>
+    <span> | </span>
+    <a href="https://github.com/ganamavo/birthday-app">
+      Solution
+    </a>
+  </h3>
+</div>
+
+## Demo
+ The demo of this project can be seen by following this [link](https://birthday-app-rinon.netlify.app/)
 ## Structure of the project
 - I started with fetching the data from the people.json
 - Generating a reusable html in a function called `htmlGenerator` so that I can reuse it whenever I want to.
@@ -21,4 +36,10 @@ The challenge is to create an app that shows people's birthdays, enables users t
  
 ## Comment
 It's a nice and helpful project. I have solidified my knowledge because there is a lot of stuff that I gained from it. Thanks for that!
+
+
+## Contact
+ 
+-  GitHub [@ganamavo](https://github.com/ganamavo)
+-  Twitter [@twitter](https://twitter.com/RTendrinomena)
 
