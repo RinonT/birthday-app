@@ -48,6 +48,19 @@ h1 {
 	opacity: 0;
 }
 
+.cancel.exit {
+	position: absolute;
+    top: 0;
+    right: 0;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+.cancel.exit svg {
+	width: 28px;
+}
+
 .delete_container.bg-warning {
 	transform: translateY(0%);
 	-webkit-transform: translateY(0%);
@@ -99,8 +112,14 @@ img {
 }
 
 .container, .delete_container {
+	position: relative;
 	width: 80%;
 	padding: 32px;
+}
+
+button:focus {
+	outline: none;
+
 }
 
 button, .filter_container input, .filter_container select {
@@ -286,7 +305,7 @@ label {
 	.popup .button_container {
 		margin-top: 12px;
 	}
-	
+
 	button#reset_filter { 
 		font-weight: 600;
 	}

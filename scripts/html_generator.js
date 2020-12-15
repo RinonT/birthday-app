@@ -6,9 +6,9 @@ export const htmlGenerator = (list) => {
         return `
         <div data-id="${person.id}" class="list_container">
         <img class="peopleList_image" src="${person.picture}" alt="${person.firstName}'s picture">
-	 <div class="peopleList_info">
+	     <div class="peopleList_info">
 		<p class="peopleList_name">
-        ${person.firstName} ${person.lastName} 
+            ${person.firstName} ${person.lastName} 
 		</p>
         <span class="peopleList_birthday date">
         Turns <strong>${person.ages > 1 ? person.ages + " years" : person.ages + " year"} old</strong> on the ${person.date}

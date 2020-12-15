@@ -11,6 +11,9 @@ export const addNewPerson = (e) => {
     addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container bg-primary">
         <h3> Add the list</h3>
+        <button class="cancel exit" name="exit" >
+            <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
         <label class="d-block" for="firstname">First Name:</label>
         <input type="text" name="firstname" placeholder="first name" id="firstname">
         <label class="d-block" for="lastname">Last Name:</label>

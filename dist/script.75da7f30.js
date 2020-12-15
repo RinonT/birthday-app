@@ -158,9 +158,9 @@ const htmlGenerator = list => {
     return `
         <div data-id="${person.id}" class="list_container">
         <img class="peopleList_image" src="${person.picture}" alt="${person.firstName}'s picture">
-	 <div class="peopleList_info">
+	     <div class="peopleList_info">
 		<p class="peopleList_name">
-        ${person.firstName} ${person.lastName} 
+            ${person.firstName} ${person.lastName} 
 		</p>
         <span class="peopleList_birthday date">
         Turns <strong>${person.ages > 1 ? person.ages + " years" : person.ages + " year"} old</strong> on the ${person.date}
@@ -373,6 +373,9 @@ const addNewPerson = e => {
   addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container bg-primary">
         <h3> Add the list</h3>
+        <button class="cancel exit" name="exit" >
+            <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
         <label class="d-block" for="firstname">First Name:</label>
         <input type="text" name="firstname" placeholder="first name" id="firstname">
         <label class="d-block" for="lastname">Last Name:</label>
@@ -473,6 +476,9 @@ function editPersonPopup(id) {
   formPopup.insertAdjacentHTML('afterbegin', `
     <div class="container bg-primary">
         <h3> Edit the person</h3>
+        <button class="cancel exit" name="exit" >
+            <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
         <label class="d-block" for="firstname">First Name:</label>
         <input type="text" name="firstname" id="firstname" value="${personToEdit.firstName}" required>
         <label class="d-block" for="lastname">Last Name:</label>
@@ -657,7 +663,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62065" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52079" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
