@@ -3,7 +3,7 @@ body {
 }
 
 .page_main {
-	max-width: 900px;
+	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -68,6 +68,8 @@ h1 {
 input {
 	width: 100%;
 	outline: none;
+	border: none;
+    padding: 5px;
 	border-radius: 4px;
 }
 
@@ -81,6 +83,10 @@ select#select_month {
 
 img {
 	border-radius: 5px;
+}
+
+.personName {
+	color: royalblue;
 }
 
 .filter_list_container {
@@ -126,6 +132,15 @@ svg {
 	color: white;
 }
 
+.whishingBirthday_text {
+	font-size: 16px;
+	margin-top: 12px;
+	color: skyblue;
+}
+
+.whishingBirthday_text svg {
+	width: 20px;
+}
 strong {
 	color: #EF4565;
 }
@@ -245,6 +260,11 @@ label {
 		flex-direction: row;
 		justify-content: space-between;
 	}
+
+	.input_container {
+		flex-basis: 35%;
+	}
+
 	.contents_container {
 		padding-left: 0;
 		padding-right: 0;
@@ -254,8 +274,9 @@ label {
 	}
 	.list_container {
 		display: grid;
-		grid-template-columns: 20% 50% auto;
+		grid-template-columns: 16% 62% auto;
 	}
+
 	.popup {
 		padding: 120px;
 	}
@@ -265,10 +286,11 @@ label {
 	.popup .button_container {
 		margin-top: 12px;
 	}
-	button#reset_filter {
-		transform: translateX(-92%);
+	
+	button#reset_filter { 
 		font-weight: 600;
 	}
+
 	button.submit_button {
 		background: #EF4565;
 		font-weight: 500;
@@ -316,8 +338,14 @@ label {
 	.peopleList_numberOfDays.days {
 		font-size: 24px;
 		line-height: 28px;
-		margin-left: 108px;
+		margin-left: 68px;
 	}
+
+	.whishingBirthday_text {
+		font-size: 24px;
+		margin-top: 17px; 
+	}
+
 	.edit {
 		margin-right: 16px;
 	}
