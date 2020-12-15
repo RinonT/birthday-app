@@ -48,15 +48,6 @@ h1 {
 	opacity: 0;
 }
 
-.cancel.exit {
-	position: absolute;
-    top: 0;
-    right: 0;
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
-
 .cancel.exit svg {
 	width: 28px;
 }
@@ -153,6 +144,17 @@ svg {
     padding-right: 45px;
 }
 
+.cancel.exit {
+	position: absolute;
+    top: 0;
+    right: 0;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding: 0;
+	padding-top: 12px;
+	padding-right: 16px;
+}
 .submit {
 	padding-left: 45px;
     padding-right: 45px;
