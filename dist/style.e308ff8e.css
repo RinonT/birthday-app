@@ -149,8 +149,14 @@ svg {
 .cancel_delete, .cancel {
 	background-color: green;
 	color: white;
+	padding-left: 45px;
+    padding-right: 45px;
 }
 
+.submit {
+	padding-left: 45px;
+    padding-right: 45px;
+}
 .whishingBirthday_text {
 	font-size: 16px;
 	margin-top: 12px;
