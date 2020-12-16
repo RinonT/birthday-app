@@ -24,8 +24,8 @@ function editPersonPopup(id) {
     let formPopup = document.createElement('form');
     formPopup.classList.add('popup');
     formPopup.insertAdjacentHTML('afterbegin', `
-    <div class="container bg-primary">
-        <h3> Edit the person</h3>
+    <div class="container form_container">
+        <h3> Edit ${personToEdit.firstName} ${personToEdit.lastName}</h3>
         <button class="cancel exit" name="exit" >
             <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -34,7 +34,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="lastname">Last Name:</label>
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
-        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}" required>
+        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">

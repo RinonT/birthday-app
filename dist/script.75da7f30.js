@@ -371,7 +371,7 @@ const addNewPerson = e => {
   let addListForm = document.createElement('form');
   addListForm.classList.add('popup');
   addListForm.insertAdjacentHTML('afterbegin', ` 
-    <div class="container bg-primary">
+    <div class="container form_container">
         <h3> Add the list</h3>
         <button class="cancel exit" name="exit" >
             <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -385,7 +385,7 @@ const addNewPerson = e => {
         <label class="d-block" for="picture"> Image url:</label>
         <input type="text" name="picture" placeholder="url for the profile picture" id="picture">
         <div class="button_container">
-            <button class="submit" type="submit"> Save</button> 
+            <button class="submit save_btn" type="submit"> Save</button> 
             <button class="cancel" name="cancel" type="button"> Cancel</button>
         </div>
     </div>`);
@@ -474,8 +474,8 @@ function editPersonPopup(id) {
   let formPopup = document.createElement('form');
   formPopup.classList.add('popup');
   formPopup.insertAdjacentHTML('afterbegin', `
-    <div class="container bg-primary">
-        <h3> Edit the person</h3>
+    <div class="container form_container">
+        <h3> Edit ${personToEdit.firstName} ${personToEdit.lastName}</h3>
         <button class="cancel exit" name="exit" >
             <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -484,7 +484,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="lastname">Last Name:</label>
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
-        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}" required>
+        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
@@ -663,7 +663,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52079" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59678" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

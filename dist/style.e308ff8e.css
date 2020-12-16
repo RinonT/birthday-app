@@ -60,10 +60,11 @@ h1 {
 	-o-transform: translateY(0%);
 }
 
-.delete_container.bg-warning button{
-	 margin-right: 32px;
-	 margin-bottom: 12px;
+.delete_container.bg-warning button {
+	margin-right: 32px;
+	margin-bottom: 12px;
 }
+
 .popup label {
 	font-weight: 500;
 	font-size: 16px;
@@ -73,7 +74,7 @@ input {
 	width: 100%;
 	outline: none;
 	border: none;
-    padding: 5px;
+	padding: 5px;
 	border-radius: 4px;
 }
 
@@ -103,14 +104,17 @@ img {
 }
 
 .container, .delete_container {
-	position: relative;
-	width: 80%;
+	background-color: #ffffff;
+	position: relative; 
 	padding: 32px;
+}
+
+.container input {
+	background: #D8EEFE;
 }
 
 button:focus {
 	outline: none;
-
 }
 
 button, .filter_container input, .filter_container select {
@@ -141,13 +145,13 @@ svg {
 	background-color: green;
 	color: white;
 	padding-left: 45px;
-    padding-right: 45px;
+	padding-right: 45px;
 }
 
 .cancel.exit {
 	position: absolute;
-    top: 0;
-    right: 0;
+	top: 0;
+	right: 0;
 	background-color: transparent;
 	border: none;
 	outline: none;
@@ -155,10 +159,12 @@ svg {
 	padding-top: 12px;
 	padding-right: 16px;
 }
+
 .submit {
 	padding-left: 45px;
-    padding-right: 45px;
+	padding-right: 45px;
 }
+
 .whishingBirthday_text {
 	font-size: 16px;
 	margin-top: 12px;
@@ -168,6 +174,7 @@ svg {
 .whishingBirthday_text svg {
 	width: 20px;
 }
+
 strong {
 	color: #EF4565;
 }
@@ -204,6 +211,14 @@ strong {
 	margin-top: 12px;
 }
 
+.save_btn {
+	background: #EF4565;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	color: #FFFFFE;
+}
+
 .popup .button_container {
 	flex-direction: column;
 }
@@ -211,6 +226,13 @@ strong {
 .popup .button_container button {
 	font-weight: 500;
 	margin-bottom: 12px;
+}
+
+button.submit_button {
+	background: #EF4565;
+	font-size: 18px;
+	line-height: 21px;
+	color: #FFFFFE;
 }
 
 .reset_filter {
@@ -287,9 +309,12 @@ label {
 		flex-direction: row;
 		justify-content: space-between;
 	}
-
 	.input_container {
 		flex-basis: 35%;
+	}
+
+	.container input {
+		width: 55%;
 	}
 
 	.contents_container {
@@ -303,21 +328,20 @@ label {
 		display: grid;
 		grid-template-columns: 16% 62% auto;
 	}
-
-	.popup {
-		padding: 120px;
-	}
 	.button_container {
 		margin-top: 43px;
+		justify-content: unset;
+	}
+
+	.button_container button {
+		margin-right: 12px;
 	}
 	.popup .button_container {
 		margin-top: 12px;
 	}
-
-	button#reset_filter { 
+	button#reset_filter {
 		font-weight: 600;
 	}
-
 	button.submit_button {
 		background: #EF4565;
 		font-weight: 500;
@@ -329,9 +353,10 @@ label {
 		flex-direction: row;
 		margin-bottom: 0;
 	}
-	.container.bg-primary {
-		background: rgba(168, 43, 226, 0.418);
-		padding: 120px;
+	.container.form_container {
+		width: 82%;
+		height: 95%;
+		padding: 300px;
 		padding-top: 50px;
 	}
 	.container.bg-primary {
@@ -339,14 +364,13 @@ label {
 	}
 	.popup h3 {
 		max-width: fit-content;
-		margin-left: auto;
 		margin-right: auto;
 		font-size: 24px;
 	}
 	.container, .delete_container {
 		width: 60%;
 	}
-	.delete_container.bg-warning {
+	.delete_container.form_container {
 		transform: translateY(80%);
 		-webkit-transform: translateY(80%);
 		-moz-transform: translateY(80%);
@@ -367,14 +391,21 @@ label {
 		line-height: 28px;
 		margin-left: 68px;
 	}
-
 	.whishingBirthday_text {
 		font-size: 24px;
-		margin-top: 17px; 
+		margin-top: 17px;
 	}
-
 	.edit {
 		margin-right: 16px;
+	}
+  .cancel {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 21px;
+		color: #5F6C7B;
+		background-color: #FFFFFF;
+		border: 2px solid #5F6C7B;
+		box-sizing: border-box;
 	}
 }
 
