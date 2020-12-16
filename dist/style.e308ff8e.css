@@ -1,5 +1,6 @@
 body {
 	background-color: #D8EEFE;
+	font-family: 'Rubik', sans-serif;
 }
 
 .page_main {
@@ -70,7 +71,7 @@ h1 {
 	font-size: 16px;
 }
 
-input {
+input { 
 	width: 100%;
 	outline: none;
 	border: none;
@@ -84,6 +85,8 @@ input:focus {
 
 select#select_month {
 	width: 100%;
+	padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 img {
@@ -179,7 +182,7 @@ strong {
 	color: #EF4565;
 }
 
-.add_list {
+.add_list { 
 	font-weight: bold;
 	margin-bottom: 16px;
 	margin-left: 8px;
@@ -188,7 +191,7 @@ strong {
 	color: white;
 }
 
-.add_list:hover {
+.add_list:hover { 
 	background-color: blue;
 	border-color: red;
 	font-weight: bold;
