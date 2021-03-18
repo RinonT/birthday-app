@@ -235,13 +235,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.displayPersonsList = exports.newPeopleArray = void 0;
 
+var _elements = require("../scripts/elements.js");
+
 var _script = require("../script.js");
 
-var _elements = require("./elements.js");
+var _elements2 = require("./elements.js");
 
 var _utils = require("./utils.js");
 
-let newPeopleArray;
+let newPeopleArray; // export let sortedPersons;
+
 exports.newPeopleArray = newPeopleArray;
 
 const displayPersonsList = () => {
@@ -307,36 +310,51 @@ const displayPersonsList = () => {
       days: diffDays
     };
     return newPerson;
-  }); // Sorting people
+  });
+  console.log(newPeopleArray); // Sorting people
 
   const sortedPersons = newPeopleArray.sort(function (a, b) {
     return a.days - b.days;
-  }); // Filter the people
+  });
+
+  function filterByName(peopleToFilter) {
+    const searchInputValue = _elements2.filterByNameInput.value; // Filter the people that includes what the user types in the search input
+
+    return peopleToFilter.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
+  }
+
+  function filterByMonth(peopleToFilter) {
+    let selectedMonth = _elements2.selectByMonth.value;
+
+    if (selectedMonth === "empty") {
+      return peopleToFilter;
+    }
+
+    return peopleToFilter.filter(person => person.date.toLowerCase().includes(selectedMonth.toLowerCase()));
+  } // Filter the people
+
+
+  function filterByNameAndMonth(peopleToFilter) {
+    const filteredByName = filterByName(peopleToFilter);
+    const filteredByNameAndMonth = filterByMonth(filteredByName);
+    (0, _utils.displayList)(filteredByNameAndMonth);
+  }
 
   const fiterListsFunction = () => {
     // Filter the list by firstName and lastName
-    _elements.filterByNameInput.addEventListener("keyup", () => {
-      const searchInputValue = _elements.filterByNameInput.value; // Filter the people that includes what the user types in the search input
-
-      let filteredListByName = newPeopleArray.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase())); // Call the function that generate the lists add pass the filtered variable in it 
-
-      (0, _utils.displayList)(filteredListByName);
+    _elements2.filterByNameInput.addEventListener("keyup", () => {
+      filterByNameAndMonth(sortedPersons);
     }); // Filter by month  
 
 
-    _elements.selectByMonth.addEventListener("change", () => {
-      // Get the value from the search by select styles
-      let filteredListByMonth = _elements.selectByMonth.value; // Filter the people that includes what the user types in the search input
-
-      let filteredPeopleByMonth = newPeopleArray.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase())); // Call the function that generate the lists add pass the filtered variable in it
-
-      (0, _utils.displayList)(filteredPeopleByMonth);
+    _elements2.selectByMonth.addEventListener("change", () => {
+      filterByNameAndMonth(sortedPersons);
     }); //Reset the filter by the reset filter button
 
 
-    _elements.resetFilterButton.addEventListener("click", () => {
+    _elements2.resetFilterButton.addEventListener("click", () => {
       // Just call the function with the html
-      _elements.filterForm.reset();
+      _elements2.filterForm.reset();
 
       (0, _utils.displayList)(sortedPersons);
     });
@@ -344,11 +362,59 @@ const displayPersonsList = () => {
 
   fiterListsFunction(); // Display the sorted list in the document
 
-  (0, _utils.displayList)(sortedPersons);
+  (0, _utils.displayList)(sortedPersons); // // A function that deletes the list
+  // const deleteList = (idToDelete) => {
+  //     //(If I use double equals, it doesn't filter)
+  //     const personsToKeep = persons.filter(person => person.id != idToDelete);
+  //     // Show a warning before the user decides
+  //     let deleteContainerPopup = document.createElement('div');
+  //     deleteContainerPopup.classList.add('popup');
+  //     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
+  //     <div class="delete_container bg-warning">
+  //         <p class="warning">
+  //             Are you sure you want to delete?
+  //         </p>
+  //         <button type="button" name="confirm" class="confirm_delete"> Yes</button>
+  //         <button type="button" name="cancel" class="cancel_delete">Not yet</button>
+  //     </div>`);
+  //     document.body.appendChild(deleteContainerPopup)
+  //     deleteContainerPopup.classList.add("open");
+  //     // Look for the confirm delete button and delete it
+  //     deleteContainerPopup.addEventListener("click", (e) => {
+  //         e.preventDefault()
+  //         const confirmDeleteButton = e.target.closest("button.confirm_delete");
+  //         if (confirmDeleteButton) {
+  //             persons = personsToKeep;
+  //             displayPersonsList(persons);
+  //             destroyPopup(deleteContainerPopup);
+  //             table.dispatchEvent(new CustomEvent('updateList'));
+  //         }
+  //     })  
+  //     // Cancel if the user doesn't wanna delete yet
+  //     deleteContainerPopup.addEventListener("click", (e) => {
+  //         e.preventDefault()
+  //         const cancelDeleteButton = e.target.closest("button.cancel_delete");
+  //         if (cancelDeleteButton) {
+  //             destroyPopup(deleteContainerPopup);
+  //         }
+  //     })
+  //     table.dispatchEvent(new CustomEvent('updateList'));
+  // }
+  //  const deletePerson = (e) => { 
+  //     const deleteButton = e.target.closest(".delete_btn");
+  //     if (deleteButton) {
+  //         const deleteButtonContainer = e.target.closest('div.delete');
+  //         const idToDelete = deleteButtonContainer.dataset.id;
+  //         deleteList(idToDelete);
+  //     }
+  // }
+  // //************ ALL EVENT LISTNERS ************** 
+  // // Delete a person
+  // // window.addEventListener("click", deletePerson);
 };
 
 exports.displayPersonsList = displayPersonsList;
-},{"../script.js":"script.js","./elements.js":"scripts/elements.js","./utils.js":"scripts/utils.js"}],"scripts/addPerson.js":[function(require,module,exports) {
+},{"../scripts/elements.js":"scripts/elements.js","../script.js":"script.js","./elements.js":"scripts/elements.js","./utils.js":"scripts/utils.js"}],"scripts/addPerson.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -368,22 +434,23 @@ var _utils = require("./utils.js");
 
 // Add the list 
 const addNewPerson = e => {
+  const maxDate = new Date().toISOString().slice(0, 10);
   let addListForm = document.createElement('form');
   addListForm.classList.add('popup');
   addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container form_container">
         <h3> Add the list</h3>
-        <button class="cancel exit" name="exit" >
+        <button type="button" class="cancel exit" name="exit" >
             <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <label class="d-block" for="firstname">First Name:</label>
-        <input type="text" name="firstname" placeholder="first name" id="firstname">
+        <input type="text" name="firstname" placeholder="first name" id="firstname" required>
         <label class="d-block" for="lastname">Last Name:</label>
-        <input type="text" name="lastname" placeholder="last name" id="lastname">
+        <input type="text" name="lastname" placeholder="last name" id="lastname" required>
         <label class="d-block" for="birthday"> Birthday:</label>
-        <input type="date" name="birthday" id="birthday">
+        <input type="date" name="birthday" max="${maxDate}" id="birthday">
         <label class="d-block" for="picture"> Image url:</label>
-        <input type="text" name="picture" placeholder="url for the profile picture" id="picture">
+        <input type="text" name="picture" value="https://picsum.photos/100" placeholder="url for the profile picture" id="picture" required>
         <div class="button_container">
             <button class="submit save_btn" type="submit"> Save</button> 
             <button class="cancel" name="cancel" type="button"> Cancel</button>
@@ -432,6 +499,13 @@ const addNewPerson = e => {
       (0, _utils.destroyPopup)(addListForm);
     });
   }
+
+  if (addListForm.exit) {
+    const cancelAddButton = addListForm.exit;
+    cancelAddButton.addEventListener('click', () => {
+      (0, _utils.destroyPopup)(addListForm);
+    });
+  }
 };
 
 exports.addNewPerson = addNewPerson;
@@ -468,9 +542,11 @@ const editPerson = e => {
 exports.editPerson = editPerson;
 
 function editPersonPopup(id) {
-  const personToEdit = _script.persons.find(person => person.id == id); // Create the form element
+  const personToEdit = _script.persons.find(person => person.id == id); // Create the form element 
 
 
+  const birthdayDate = new Date(personToEdit.birthday).toISOString().slice(0, 10);
+  const maxDate = new Date().toISOString().slice(0, 10);
   let formPopup = document.createElement('form');
   formPopup.classList.add('popup');
   formPopup.insertAdjacentHTML('afterbegin', `
@@ -484,7 +560,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="lastname">Last Name:</label>
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
-        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
+        <input type="date" name="birthday" id="birthday" max="${maxDate}" value="${birthdayDate}">
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
@@ -663,7 +739,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59678" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49532" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

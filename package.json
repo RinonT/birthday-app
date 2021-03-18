@@ -4,7 +4,7 @@
   "description": "Hey team! So the final project here will be a birthday list.",
   "main": "script.js",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel index.html --open",
     "serve": "nodemon -e js,njk ./script.js"
   },
   "repository": {

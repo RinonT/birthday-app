@@ -1,5 +1,5 @@
-import { table, addList, endpoint } from "./scripts/elements.js";
-import { displayPersonsList } from "./scripts/displayPeople.js";
+import { table, addList } from "./scripts/elements.js";
+import { displayPersonsList, newPeopleArray } from "./scripts/displayPeople.js";
 import { destroyPopup } from "./scripts/utils.js";
 import { addNewPerson } from "./scripts/addPerson.js";
 import { editPerson } from "./scripts/editPerson.js"; 
@@ -74,8 +74,7 @@ async function fetchPersons() {
                 destroyPopup(deleteContainerPopup);
                 table.dispatchEvent(new CustomEvent('updateList'));
             }
-        }) 
-
+        })  
         // Cancel if the user doesn't wanna delete yet
         deleteContainerPopup.addEventListener("click", (e) => {
             e.preventDefault()

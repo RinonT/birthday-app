@@ -1,8 +1,10 @@
+import { table, addList, endpoint } from "../scripts/elements.js";
 import { persons } from "../script.js";
 import { filterForm, filterByNameInput, selectByMonth, resetFilterButton } from "./elements.js";
 import { displayList } from "./utils.js";  
 
 export let newPeopleArray; 
+// export let sortedPersons;
 export const displayPersonsList = () => {
      newPeopleArray = persons.map(data => { 
         // Store all the months in a variable
@@ -71,33 +73,43 @@ export const displayPersonsList = () => {
         }
         return newPerson;
     });
-     
+     console.log(newPeopleArray);
 
     // Sorting people
     const sortedPersons = newPeopleArray.sort(function (a, b) {
         return a.days - b.days;
-    });
+    }); 
+
+    function filterByName(peopleToFilter) {
+        const searchInputValue = filterByNameInput.value;  
+        // Filter the people that includes what the user types in the search input
+        return peopleToFilter.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
+    }
+
+
+    function filterByMonth(peopleToFilter) {
+        let selectedMonth = selectByMonth.value;
+        if(selectedMonth === "empty") {
+            return peopleToFilter
+        } 
+        return  peopleToFilter.filter(person => person.date.toLowerCase().includes(selectedMonth.toLowerCase()));
+    }
 
     // Filter the people
-    const fiterListsFunction = () => {
+    function filterByNameAndMonth(peopleToFilter) {
+        const filteredByName = filterByName(peopleToFilter);
+        const filteredByNameAndMonth = filterByMonth(filteredByName);
+        displayList(filteredByNameAndMonth)
+    }
+    const fiterListsFunction = () => { 
         // Filter the list by firstName and lastName
         filterByNameInput.addEventListener("keyup", () => {
-            const searchInputValue = filterByNameInput.value; 
-            // Filter the people that includes what the user types in the search input
-            let filteredListByName = newPeopleArray.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
-            // Call the function that generate the lists add pass the filtered variable in it 
-              displayList(filteredListByName);
-             
-        });
-        
+              filterByNameAndMonth(sortedPersons)
+        }); 
+
         // Filter by month  
         selectByMonth.addEventListener("change", () => {
-            // Get the value from the search by select styles
-            let filteredListByMonth = selectByMonth.value;
-            // Filter the people that includes what the user types in the search input
-            let filteredPeopleByMonth = newPeopleArray.filter(person => person.date.toLowerCase().includes(filteredListByMonth.toLowerCase()));
-            // Call the function that generate the lists add pass the filtered variable in it
-            displayList(filteredPeopleByMonth);
+            filterByNameAndMonth(sortedPersons);
         });
         
         //Reset the filter by the reset filter button
@@ -110,6 +122,58 @@ export const displayPersonsList = () => {
     fiterListsFunction()
     // Display the sorted list in the document
     displayList(sortedPersons);
+
+    // // A function that deletes the list
+    // const deleteList = (idToDelete) => {
+    //     //(If I use double equals, it doesn't filter)
+    //     const personsToKeep = persons.filter(person => person.id != idToDelete);
+    //     // Show a warning before the user decides
+    //     let deleteContainerPopup = document.createElement('div');
+    //     deleteContainerPopup.classList.add('popup');
+    //     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
+    //     <div class="delete_container bg-warning">
+    //         <p class="warning">
+    //             Are you sure you want to delete?
+    //         </p>
+    //         <button type="button" name="confirm" class="confirm_delete"> Yes</button>
+    //         <button type="button" name="cancel" class="cancel_delete">Not yet</button>
+    //     </div>`);
+    //     document.body.appendChild(deleteContainerPopup)
+    //     deleteContainerPopup.classList.add("open");
+
+    //     // Look for the confirm delete button and delete it
+    //     deleteContainerPopup.addEventListener("click", (e) => {
+    //         e.preventDefault()
+    //         const confirmDeleteButton = e.target.closest("button.confirm_delete");
+    //         if (confirmDeleteButton) {
+    //             persons = personsToKeep;
+    //             displayPersonsList(persons);
+    //             destroyPopup(deleteContainerPopup);
+    //             table.dispatchEvent(new CustomEvent('updateList'));
+    //         }
+    //     })  
+    //     // Cancel if the user doesn't wanna delete yet
+    //     deleteContainerPopup.addEventListener("click", (e) => {
+    //         e.preventDefault()
+    //         const cancelDeleteButton = e.target.closest("button.cancel_delete");
+    //         if (cancelDeleteButton) {
+    //             destroyPopup(deleteContainerPopup);
+    //         }
+    //     })
+    //     table.dispatchEvent(new CustomEvent('updateList'));
+    // }
+    //  const deletePerson = (e) => { 
+    //     const deleteButton = e.target.closest(".delete_btn");
+    //     if (deleteButton) {
+    //         const deleteButtonContainer = e.target.closest('div.delete');
+    //         const idToDelete = deleteButtonContainer.dataset.id;
+    //         deleteList(idToDelete);
+    //     }
+    // }
+    // //************ ALL EVENT LISTNERS ************** 
+    // // Delete a person
+    // // window.addEventListener("click", deletePerson);
+    
 
     }
 

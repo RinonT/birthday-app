@@ -20,7 +20,9 @@ export const editPerson = (e) => {
 // Edit the form
 function editPersonPopup(id) {
     const personToEdit = persons.find(person => person.id == id);
-    // Create the form element
+    // Create the form element 
+    const birthdayDate = new Date(personToEdit.birthday).toISOString().slice(0, 10)
+    const maxDate = new Date().toISOString().slice(0, 10);
     let formPopup = document.createElement('form');
     formPopup.classList.add('popup');
     formPopup.insertAdjacentHTML('afterbegin', `
@@ -34,7 +36,7 @@ function editPersonPopup(id) {
         <label class="d-block" for="lastname">Last Name:</label>
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
-        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
+        <input type="date" name="birthday" id="birthday" max="${maxDate}" value="${birthdayDate}">
         <label class="d-block" for="url"> Image url:</label>
         <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">

@@ -1,10 +1,10 @@
-import  persons  from "../script.js";
+import  persons  from "../script.js"; 
 import { table } from "./elements.js";
 import { displayPersonsList } from "./displayPeople.js";
 import { destroyPopup } from "./utils.js"; 
 let people = persons; 
+export const deletePerson = (e) => { 
 
-export const deletePerson = (e) => {
     const deleteButton = e.target.closest(".delete_btn");
     if (deleteButton) {
         const deleteButtonContainer = e.target.closest('div.delete');
