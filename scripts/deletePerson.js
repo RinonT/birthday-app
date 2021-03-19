@@ -22,7 +22,7 @@ const deleteList = (idToDelete) => {
     let deleteContainerPopup = document.createElement('div');
     deleteContainerPopup.classList.add('popup', "delete_popup");
     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
-    <div class="delete_container bg-warning">
+    <div class="delete_container bg-white">
         <p class="warning">
             Are you sure you want to delete ${personsToDelete.lastName}?
         </p>

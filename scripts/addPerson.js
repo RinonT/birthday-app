@@ -1,5 +1,5 @@
 import { persons } from "../script.js";
-import { table, listContainer } from "./elements.js";
+import { table, listContainer, body } from "./elements.js";
 import { htmlGenerator } from "./html_generator.js";
 import { displayPersonsList } from "./displayPeople.js";
 import { destroyPopup } from "./utils.js"; 
@@ -30,6 +30,7 @@ export const addNewPerson = (e) => {
     </div>`);
     document.body.appendChild(addListForm);
     addListForm.classList.add("open");
+    body.classList.add("overflow_hidden");
 
     // Add the list of the people
     const addPeopleList = (e) => {

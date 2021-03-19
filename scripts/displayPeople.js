@@ -72,8 +72,7 @@ export const displayPersonsList = () => {
             days: diffDays,
         }
         return newPerson;
-    });
-     console.log(newPeopleArray);
+    }); 
 
     // Sorting people
     const sortedPersons = newPeopleArray.sort(function (a, b) {
@@ -122,59 +121,6 @@ export const displayPersonsList = () => {
     fiterListsFunction()
     // Display the sorted list in the document
     displayList(sortedPersons);
-
-    // // A function that deletes the list
-    // const deleteList = (idToDelete) => {
-    //     //(If I use double equals, it doesn't filter)
-    //     const personsToKeep = persons.filter(person => person.id != idToDelete);
-    //     // Show a warning before the user decides
-    //     let deleteContainerPopup = document.createElement('div');
-    //     deleteContainerPopup.classList.add('popup');
-    //     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
-    //     <div class="delete_container bg-warning">
-    //         <p class="warning">
-    //             Are you sure you want to delete?
-    //         </p>
-    //         <button type="button" name="confirm" class="confirm_delete"> Yes</button>
-    //         <button type="button" name="cancel" class="cancel_delete">Not yet</button>
-    //     </div>`);
-    //     document.body.appendChild(deleteContainerPopup)
-    //     deleteContainerPopup.classList.add("open");
-
-    //     // Look for the confirm delete button and delete it
-    //     deleteContainerPopup.addEventListener("click", (e) => {
-    //         e.preventDefault()
-    //         const confirmDeleteButton = e.target.closest("button.confirm_delete");
-    //         if (confirmDeleteButton) {
-    //             persons = personsToKeep;
-    //             displayPersonsList(persons);
-    //             destroyPopup(deleteContainerPopup);
-    //             table.dispatchEvent(new CustomEvent('updateList'));
-    //         }
-    //     })  
-    //     // Cancel if the user doesn't wanna delete yet
-    //     deleteContainerPopup.addEventListener("click", (e) => {
-    //         e.preventDefault()
-    //         const cancelDeleteButton = e.target.closest("button.cancel_delete");
-    //         if (cancelDeleteButton) {
-    //             destroyPopup(deleteContainerPopup);
-    //         }
-    //     })
-    //     table.dispatchEvent(new CustomEvent('updateList'));
-    // }
-    //  const deletePerson = (e) => { 
-    //     const deleteButton = e.target.closest(".delete_btn");
-    //     if (deleteButton) {
-    //         const deleteButtonContainer = e.target.closest('div.delete');
-    //         const idToDelete = deleteButtonContainer.dataset.id;
-    //         deleteList(idToDelete);
-    //     }
-    // }
-    // //************ ALL EVENT LISTNERS ************** 
-    // // Delete a person
-    // // window.addEventListener("click", deletePerson);
-    
-
     }
 
  

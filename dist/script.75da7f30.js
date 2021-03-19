@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.endpoint = exports.resetFilterButton = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
+exports.endpoint = exports.body = exports.resetFilterButton = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
 // Grab all the necesssary elements
 const table = document.querySelector(".peopleList_container");
 exports.table = table;
@@ -137,9 +137,11 @@ const filterByNameInput = document.querySelector("#filterByName");
 exports.filterByNameInput = filterByNameInput;
 const selectByMonth = document.querySelector("#select_month");
 exports.selectByMonth = selectByMonth;
-const resetFilterButton = document.querySelector('#reset_filter'); // Importing the data
-
+const resetFilterButton = document.querySelector('#reset_filter');
 exports.resetFilterButton = resetFilterButton;
+const body = document.querySelector("body"); // Importing the data
+
+exports.body = body;
 const endpoint = "./people.json";
 exports.endpoint = endpoint;
 },{}],"scripts/html_generator.js":[function(require,module,exports) {
@@ -223,7 +225,10 @@ async function destroyPopup(popup) {
   popup.classList.remove('open');
   await wait(500); // remove the popup from the DOM
 
-  popup.remove(); // remove it from the js memory
+  popup.remove();
+
+  _elements.body.classList.remove("overflow_hidden"); // remove it from the js memory
+
 
   popup = null;
 }
@@ -310,8 +315,7 @@ const displayPersonsList = () => {
       days: diffDays
     };
     return newPerson;
-  });
-  console.log(newPeopleArray); // Sorting people
+  }); // Sorting people
 
   const sortedPersons = newPeopleArray.sort(function (a, b) {
     return a.days - b.days;
@@ -362,55 +366,7 @@ const displayPersonsList = () => {
 
   fiterListsFunction(); // Display the sorted list in the document
 
-  (0, _utils.displayList)(sortedPersons); // // A function that deletes the list
-  // const deleteList = (idToDelete) => {
-  //     //(If I use double equals, it doesn't filter)
-  //     const personsToKeep = persons.filter(person => person.id != idToDelete);
-  //     // Show a warning before the user decides
-  //     let deleteContainerPopup = document.createElement('div');
-  //     deleteContainerPopup.classList.add('popup');
-  //     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
-  //     <div class="delete_container bg-warning">
-  //         <p class="warning">
-  //             Are you sure you want to delete?
-  //         </p>
-  //         <button type="button" name="confirm" class="confirm_delete"> Yes</button>
-  //         <button type="button" name="cancel" class="cancel_delete">Not yet</button>
-  //     </div>`);
-  //     document.body.appendChild(deleteContainerPopup)
-  //     deleteContainerPopup.classList.add("open");
-  //     // Look for the confirm delete button and delete it
-  //     deleteContainerPopup.addEventListener("click", (e) => {
-  //         e.preventDefault()
-  //         const confirmDeleteButton = e.target.closest("button.confirm_delete");
-  //         if (confirmDeleteButton) {
-  //             persons = personsToKeep;
-  //             displayPersonsList(persons);
-  //             destroyPopup(deleteContainerPopup);
-  //             table.dispatchEvent(new CustomEvent('updateList'));
-  //         }
-  //     })  
-  //     // Cancel if the user doesn't wanna delete yet
-  //     deleteContainerPopup.addEventListener("click", (e) => {
-  //         e.preventDefault()
-  //         const cancelDeleteButton = e.target.closest("button.cancel_delete");
-  //         if (cancelDeleteButton) {
-  //             destroyPopup(deleteContainerPopup);
-  //         }
-  //     })
-  //     table.dispatchEvent(new CustomEvent('updateList'));
-  // }
-  //  const deletePerson = (e) => { 
-  //     const deleteButton = e.target.closest(".delete_btn");
-  //     if (deleteButton) {
-  //         const deleteButtonContainer = e.target.closest('div.delete');
-  //         const idToDelete = deleteButtonContainer.dataset.id;
-  //         deleteList(idToDelete);
-  //     }
-  // }
-  // //************ ALL EVENT LISTNERS ************** 
-  // // Delete a person
-  // // window.addEventListener("click", deletePerson);
+  (0, _utils.displayList)(sortedPersons);
 };
 
 exports.displayPersonsList = displayPersonsList;
@@ -457,7 +413,10 @@ const addNewPerson = e => {
         </div>
     </div>`);
   document.body.appendChild(addListForm);
-  addListForm.classList.add("open"); // Add the list of the people
+  addListForm.classList.add("open");
+
+  _elements.body.classList.add("overflow_hidden"); // Add the list of the people
+
 
   const addPeopleList = e => {
     addListForm.addEventListener("submit", e => {
@@ -569,7 +528,10 @@ function editPersonPopup(id) {
         </div>
     </div>`);
   document.body.appendChild(formPopup);
-  formPopup.classList.add("open"); // Save the changes
+  formPopup.classList.add("open");
+
+  _elements.body.classList.add("overflow_hidden"); // Save the changes
+
 
   formPopup.addEventListener("submit", e => {
     e.preventDefault();
@@ -669,7 +631,10 @@ async function fetchPersons() {
             <button type="button" name="cancel" class="cancel_delete">Not yet</button>
         </div>`);
     document.body.appendChild(deleteContainerPopup);
-    deleteContainerPopup.classList.add("open"); // Look for the confirm delete button and delete it
+    deleteContainerPopup.classList.add("open");
+
+    _elements.body.classList.add("overflow_hidden"); // Look for the confirm delete button and delete it
+
 
     deleteContainerPopup.addEventListener("click", e => {
       e.preventDefault();
@@ -694,7 +659,10 @@ async function fetchPersons() {
     });
 
     _elements.table.dispatchEvent(new CustomEvent('updateList'));
-  }; //************ ALL EVENT LISTNERS **************
+  }; // if(form.classList.contains("open")) {
+  //     main.classList.add("overflow_hidden");
+  // }
+  //************ ALL EVENT LISTNERS **************
   // Add the list 
 
 
@@ -739,7 +707,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49532" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

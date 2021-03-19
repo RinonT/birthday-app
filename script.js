@@ -1,5 +1,5 @@
-import { table, addList } from "./scripts/elements.js";
-import { displayPersonsList, newPeopleArray } from "./scripts/displayPeople.js";
+import { table, addList, body } from "./scripts/elements.js";
+import { displayPersonsList} from "./scripts/displayPeople.js";
 import { destroyPopup } from "./scripts/utils.js";
 import { addNewPerson } from "./scripts/addPerson.js";
 import { editPerson } from "./scripts/editPerson.js"; 
@@ -16,7 +16,7 @@ async function fetchPersons() {
     // Save in the local storage
     const mirrorToLocalStorage = () => { 
         localStorage.setItem('persons', JSON.stringify(persons));
-    }
+    } 
 
     // restor from local storage
     const initLocalStorage = () => {
@@ -63,7 +63,8 @@ async function fetchPersons() {
         </div>`);
         document.body.appendChild(deleteContainerPopup)
         deleteContainerPopup.classList.add("open");
-
+        body.classList.add("overflow_hidden");
+ 
         // Look for the confirm delete button and delete it
         deleteContainerPopup.addEventListener("click", (e) => {
             e.preventDefault()
@@ -85,7 +86,9 @@ async function fetchPersons() {
         })
         table.dispatchEvent(new CustomEvent('updateList'));
     }
-
+    // if(form.classList.contains("open")) {
+    //     main.classList.add("overflow_hidden");
+    // }
     //************ ALL EVENT LISTNERS **************
     // Add the list 
     addList.addEventListener("click", addNewPerson);

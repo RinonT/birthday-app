@@ -1,5 +1,5 @@
 import { persons } from "../script.js";
-import { table } from "./elements.js";
+import { table, body } from "./elements.js";
 import { destroyPopup } from "./utils.js";
 import { displayPersonsList } from "./displayPeople.js";
 
@@ -46,6 +46,7 @@ function editPersonPopup(id) {
     </div>`);
     document.body.appendChild(formPopup);
     formPopup.classList.add("open");
+    body.classList.add("overflow_hidden");
 
     // Save the changes
     formPopup.addEventListener("submit", (e) => {

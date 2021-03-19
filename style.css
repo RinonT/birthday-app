@@ -3,6 +3,11 @@ body {
 	font-family: 'Rubik', sans-serif;
 }
 
+.overflow_hidden {
+	overflow-y: hidden;
+	position: relative;
+}
+
 .page_main {
 	max-width: 1000px;
 	margin-left: auto;
