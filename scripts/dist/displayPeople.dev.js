@@ -122,15 +122,13 @@ var displayPersonsList = function displayPersonsList() {
 
     _elements2.selectByMonth.addEventListener("change", function () {
       filterByNameAndMonth(sortedPersons);
-    }); //Reset the filter by the reset filter button
+    }); // //Reset the filter by the reset filter button
+    // resetFilterButton.addEventListener("click", () => {
+    //    // Just call the function with the html
+    //    filterForm.reset();
+    //    displayList(sortedPersons);
+    // });
 
-
-    _elements2.resetFilterButton.addEventListener("click", function () {
-      // Just call the function with the html
-      _elements2.filterForm.reset();
-
-      (0, _utils.displayList)(sortedPersons);
-    });
   };
 
   fiterListsFunction(); // Display the sorted list in the document

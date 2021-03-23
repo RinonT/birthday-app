@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.endpoint = exports.body = exports.resetFilterButton = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
+exports.endpoint = exports.body = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
 // Grab all the necesssary elements
 const table = document.querySelector(".peopleList_container");
 exports.table = table;
@@ -135,10 +135,9 @@ const filterForm = document.querySelector(".filter_list_container");
 exports.filterForm = filterForm;
 const filterByNameInput = document.querySelector("#filterByName");
 exports.filterByNameInput = filterByNameInput;
-const selectByMonth = document.querySelector("#select_month");
+const selectByMonth = document.querySelector("#select_month"); //  export const resetFilterButton = document.querySelector('#reset_filter');
+
 exports.selectByMonth = selectByMonth;
-const resetFilterButton = document.querySelector('#reset_filter');
-exports.resetFilterButton = resetFilterButton;
 const body = document.querySelector("body"); // Importing the data
 
 exports.body = body;
@@ -353,15 +352,13 @@ const displayPersonsList = () => {
 
     _elements2.selectByMonth.addEventListener("change", () => {
       filterByNameAndMonth(sortedPersons);
-    }); //Reset the filter by the reset filter button
+    }); // //Reset the filter by the reset filter button
+    // resetFilterButton.addEventListener("click", () => {
+    //    // Just call the function with the html
+    //    filterForm.reset();
+    //    displayList(sortedPersons);
+    // });
 
-
-    _elements2.resetFilterButton.addEventListener("click", () => {
-      // Just call the function with the html
-      _elements2.filterForm.reset();
-
-      (0, _utils.displayList)(sortedPersons);
-    });
   };
 
   fiterListsFunction(); // Display the sorted list in the document
@@ -707,7 +704,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55862" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57173" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.endpoint = exports.body = exports.resetFilterButton = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
+exports.endpoint = exports.body = exports.selectByMonth = exports.filterByNameInput = exports.filterForm = exports.addList = exports.listContainer = exports.table = void 0;
 // Grab all the necesssary elements
 var table = document.querySelector(".peopleList_container");
 exports.table = table;
@@ -15,10 +15,9 @@ var filterForm = document.querySelector(".filter_list_container");
 exports.filterForm = filterForm;
 var filterByNameInput = document.querySelector("#filterByName");
 exports.filterByNameInput = filterByNameInput;
-var selectByMonth = document.querySelector("#select_month");
+var selectByMonth = document.querySelector("#select_month"); //  export const resetFilterButton = document.querySelector('#reset_filter');
+
 exports.selectByMonth = selectByMonth;
-var resetFilterButton = document.querySelector('#reset_filter');
-exports.resetFilterButton = resetFilterButton;
 var body = document.querySelector("body"); // Importing the data
 
 exports.body = body;

@@ -111,12 +111,12 @@ export const displayPersonsList = () => {
             filterByNameAndMonth(sortedPersons);
         });
         
-        //Reset the filter by the reset filter button
-        resetFilterButton.addEventListener("click", () => {
-           // Just call the function with the html
-           filterForm.reset();
-           displayList(sortedPersons);
-        });
+        // //Reset the filter by the reset filter button
+        // resetFilterButton.addEventListener("click", () => {
+        //    // Just call the function with the html
+        //    filterForm.reset();
+        //    displayList(sortedPersons);
+        // });
         }
     fiterListsFunction()
     // Display the sorted list in the document
