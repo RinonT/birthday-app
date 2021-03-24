@@ -11,7 +11,7 @@ export const htmlGenerator = (list) => {
             ${person.firstName} ${person.lastName} 
 		</p>
         <span class="peopleList_birthday date">
-        Turns <strong>${person.ages > 1 ? person.ages + " years" : person.ages + " year"} old</strong> on the ${person.date}
+        Turns <strong>${person.ages}</strong> on ${person.date}
         </span>
         ${person.days == 0 ? 
             `<p class="whishingBirthday_text">

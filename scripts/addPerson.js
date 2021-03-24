@@ -24,7 +24,7 @@ export const addNewPerson = (e) => {
         <label class="d-block" for="picture"> Image url:</label>
         <input type="text" name="picture" value="https://picsum.photos/100" placeholder="url for the profile picture" id="picture" required>
         <div class="button_container">
-            <button class="submit save_btn" type="submit"> Save</button> 
+            <button class="submit save_btn" type="submit"> Save changes</button> 
             <button class="cancel" name="cancel" type="button"> Cancel</button>
         </div>
     </div>`);
