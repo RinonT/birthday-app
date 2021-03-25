@@ -389,7 +389,7 @@ var _utils = require("./utils.js");
 const addNewPerson = e => {
   const maxDate = new Date().toISOString().slice(0, 10);
   let addListForm = document.createElement('form');
-  addListForm.classList.add('popup');
+  addListForm.classList.add('popup', 'add_form');
   addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container form_container">
         <h3> Add the list</h3>
@@ -405,8 +405,8 @@ const addNewPerson = e => {
         <label class="d-block" for="picture"> Image url:</label>
         <input type="text" name="picture" value="https://picsum.photos/100" placeholder="url for the profile picture" id="picture" required>
         <div class="button_container">
-            <button class="submit save_btn" type="submit"> Save changes</button> 
-            <button class="cancel" name="cancel" type="button"> Cancel</button>
+            <button class="submit save_btn confirm_btn" type="submit"> Save changes</button> 
+            <button class="cancel cancel_btn" name="cancel" type="button"> Cancel</button>
         </div>
     </div>`);
   document.body.appendChild(addListForm);
@@ -517,11 +517,9 @@ function editPersonPopup(id) {
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
         <input type="date" name="birthday" id="birthday" max="${maxDate}" value="${birthdayDate}">
-        <label class="d-block" for="url"> Image url:</label>
-        <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
-            <button class="submit_button" type="submit" data-id="${id}"> Save changes</button>
-            <button class="cancel" name="cancel" type="button" data-id="${id}"> Cancel</button>
+            <button class="submit_button confirm_btn" type="submit" data-id="${id}"> Save changes</button>
+            <button class="cancel cancel_btn" name="cancel" type="button" data-id="${id}"> Cancel</button>
         </div>
     </div>`);
   document.body.appendChild(formPopup);
@@ -534,8 +532,7 @@ function editPersonPopup(id) {
     e.preventDefault();
     personToEdit.lastName = formPopup.lastname.value;
     personToEdit.firstName = formPopup.firstname.value;
-    personToEdit.birthday = formPopup.birthday.value;
-    personToEdit.picture = formPopup.picture.value; // Display in the list
+    personToEdit.birthday = formPopup.birthday.value; // Display in the list
 
     (0, _displayPeople.displayPersonsList)();
     (0, _utils.destroyPopup)(formPopup);
@@ -620,12 +617,15 @@ async function fetchPersons() {
     let deleteContainerPopup = document.createElement('div');
     deleteContainerPopup.classList.add('popup');
     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
-        <div class="delete_container bg-warning">
-            <p class="warning">
+        <div class="delete_container">
+            <button class="cancel exit" name="cancel" >
+                <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <p class="warning_text">
                 Are you sure you want to delete?
             </p>
-            <button type="button" name="confirm" class="confirm_delete"> Yes</button>
-            <button type="button" name="cancel" class="cancel_delete">Not yet</button>
+            <button type="button" name="confirm" class="confirm_delete confirm_btn"> Confirm delete</button>
+            <button type="button" name="cancel" class="cancel cancel_delete cancel_btn"> Cancel</button>
         </div>`);
     document.body.appendChild(deleteContainerPopup);
     deleteContainerPopup.classList.add("open");
@@ -648,7 +648,7 @@ async function fetchPersons() {
 
     deleteContainerPopup.addEventListener("click", e => {
       e.preventDefault();
-      const cancelDeleteButton = e.target.closest("button.cancel_delete");
+      const cancelDeleteButton = e.target.closest("button.cancel");
 
       if (cancelDeleteButton) {
         (0, _utils.destroyPopup)(deleteContainerPopup);
@@ -704,7 +704,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51476" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55370" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

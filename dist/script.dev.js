@@ -81,7 +81,7 @@ function fetchPersons() {
 
             var deleteContainerPopup = document.createElement('div');
             deleteContainerPopup.classList.add('popup');
-            deleteContainerPopup.insertAdjacentHTML('afterbegin', "\n        <div class=\"delete_container bg-warning\">\n            <p class=\"warning\">\n                Are you sure you want to delete?\n            </p>\n            <button type=\"button\" name=\"confirm\" class=\"confirm_delete\"> Yes</button>\n            <button type=\"button\" name=\"cancel\" class=\"cancel_delete\">Not yet</button>\n        </div>");
+            deleteContainerPopup.insertAdjacentHTML('afterbegin', "\n        <div class=\"delete_container\">\n            <button class=\"cancel exit\" name=\"cancel\" >\n                <svg fill=\"none\" stroke=\"#094067\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\"></path></svg>\n            </button>\n            <p class=\"warning_text\">\n                Are you sure you want to delete?\n            </p>\n            <button type=\"button\" name=\"confirm\" class=\"confirm_delete confirm_btn\"> Confirm delete</button>\n            <button type=\"button\" name=\"cancel\" class=\"cancel cancel_delete cancel_btn\"> Cancel</button>\n        </div>");
             document.body.appendChild(deleteContainerPopup);
             deleteContainerPopup.classList.add("open");
 
@@ -103,7 +103,7 @@ function fetchPersons() {
 
             deleteContainerPopup.addEventListener("click", function (e) {
               e.preventDefault();
-              var cancelDeleteButton = e.target.closest("button.cancel_delete");
+              var cancelDeleteButton = e.target.closest("button.cancel");
 
               if (cancelDeleteButton) {
                 (0, _utils.destroyPopup)(deleteContainerPopup);

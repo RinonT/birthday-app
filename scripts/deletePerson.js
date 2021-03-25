@@ -14,15 +14,15 @@ export const deletePerson = (e) => {
 }
 
 // A function that deletes the list
-const deleteList = (idToDelete) => {
+export const deleteList = (idToDelete) => {
     //(If I use double equals, it doesn't filter)
-    const personsToKeep = people.filter(person => person.id != idToDelete);
+    const personsToKeep = people.filter(person => person.id !== idToDelete);
    const personsToDelete = people.filter(person => person.id == idToDelete);
     // Show a warning before the user decides
     let deleteContainerPopup = document.createElement('div');
     deleteContainerPopup.classList.add('popup', "delete_popup");
     deleteContainerPopup.insertAdjacentHTML('afterbegin', `
-    <div class="delete_container bg-white">
+    <div class="bg-white">
         <p class="warning">
             Are you sure you want to delete ${personsToDelete.lastName}?
         </p>

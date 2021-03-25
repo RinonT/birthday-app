@@ -37,11 +37,9 @@ function editPersonPopup(id) {
         <input type="text" name="lastname" id="lastname" value="${personToEdit.lastName}" required>
         <label class="d-block" for="birthday"> Birthday:</label>
         <input type="date" name="birthday" id="birthday" max="${maxDate}" value="${birthdayDate}">
-        <label class="d-block" for="url"> Image url:</label>
-        <input type="text" name="picture" id="picture" value="${personToEdit.picture}" required>
         <div class="button_container">
-            <button class="submit_button" type="submit" data-id="${id}"> Save changes</button>
-            <button class="cancel" name="cancel" type="button" data-id="${id}"> Cancel</button>
+            <button class="submit_button confirm_btn" type="submit" data-id="${id}"> Save changes</button>
+            <button class="cancel cancel_btn" name="cancel" type="button" data-id="${id}"> Cancel</button>
         </div>
     </div>`);
     document.body.appendChild(formPopup);
@@ -53,8 +51,7 @@ function editPersonPopup(id) {
         e.preventDefault();
         personToEdit.lastName = formPopup.lastname.value;
         personToEdit.firstName = formPopup.firstname.value;
-        personToEdit.birthday = formPopup.birthday.value;
-        personToEdit.picture = formPopup.picture.value;
+        personToEdit.birthday = formPopup.birthday.value; 
         // Display in the list
         displayPersonsList();
         destroyPopup(formPopup)

@@ -8,7 +8,7 @@ import { destroyPopup } from "./utils.js";
 export const addNewPerson = (e) => {
     const maxDate = new Date().toISOString().slice(0, 10);
     let addListForm = document.createElement('form');
-    addListForm.classList.add('popup');
+    addListForm.classList.add('popup', 'add_form');
     addListForm.insertAdjacentHTML('afterbegin', ` 
     <div class="container form_container">
         <h3> Add the list</h3>
@@ -24,8 +24,8 @@ export const addNewPerson = (e) => {
         <label class="d-block" for="picture"> Image url:</label>
         <input type="text" name="picture" value="https://picsum.photos/100" placeholder="url for the profile picture" id="picture" required>
         <div class="button_container">
-            <button class="submit save_btn" type="submit"> Save changes</button> 
-            <button class="cancel" name="cancel" type="button"> Cancel</button>
+            <button class="submit save_btn confirm_btn" type="submit"> Save changes</button> 
+            <button class="cancel cancel_btn" name="cancel" type="button"> Cancel</button>
         </div>
     </div>`);
     document.body.appendChild(addListForm);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deletePerson = void 0;
+exports.deleteList = exports.deletePerson = void 0;
 
 var _script = _interopRequireDefault(require("../script.js"));
 
@@ -33,7 +33,7 @@ exports.deletePerson = deletePerson;
 var deleteList = function deleteList(idToDelete) {
   //(If I use double equals, it doesn't filter)
   var personsToKeep = people.filter(function (person) {
-    return person.id != idToDelete;
+    return person.id !== idToDelete;
   });
   var personsToDelete = people.filter(function (person) {
     return person.id == idToDelete;
@@ -41,7 +41,7 @@ var deleteList = function deleteList(idToDelete) {
 
   var deleteContainerPopup = document.createElement('div');
   deleteContainerPopup.classList.add('popup', "delete_popup");
-  deleteContainerPopup.insertAdjacentHTML('afterbegin', "\n    <div class=\"delete_container bg-white\">\n        <p class=\"warning\">\n            Are you sure you want to delete ".concat(personsToDelete.lastName, "?\n        </p>\n        <button type=\"button\" name=\"confirm\" class=\"confirm_delete\"> Yes</button>\n        <button type=\"button\" name=\"cancel\" class=\"cancel_delete\">Not yet</button>\n    </div>"));
+  deleteContainerPopup.insertAdjacentHTML('afterbegin', "\n    <div class=\"bg-white\">\n        <p class=\"warning\">\n            Are you sure you want to delete ".concat(personsToDelete.lastName, "?\n        </p>\n        <button type=\"button\" name=\"confirm\" class=\"confirm_delete\"> Yes</button>\n        <button type=\"button\" name=\"cancel\" class=\"cancel_delete\">Not yet</button>\n    </div>"));
   document.body.appendChild(deleteContainerPopup);
   deleteContainerPopup.classList.add("open"); // Look for the confirm delete button and delete it
 
@@ -69,3 +69,5 @@ var deleteList = function deleteList(idToDelete) {
 
   _elements.table.dispatchEvent(new CustomEvent('updateList'));
 };
+
+exports.deleteList = deleteList;
