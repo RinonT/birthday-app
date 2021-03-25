@@ -46,7 +46,7 @@ h1 {
 	height: 100vh;
 	position: fixed;
 	top: 0;
-	padding-top: 20px;
+	padding-top: 0;
 	transition: all 0.25s;
 	align-items: center;
 	pointer-events: none;
@@ -119,7 +119,7 @@ img {
 	background-color: #ffffff;
 	position: relative;
 	padding: 32px;
-	padding-top: 120px;
+	padding-top: 104px;
 }
 
 .container input {
@@ -271,7 +271,9 @@ strong {
 	line-height: 21px;
 	color: #FFFFFE;
 }
-
+.add_form {
+	overflow-y: scroll;
+}
 .popup .button_container {
 	/* flex-direction: column; */
 	flex-wrap: wrap;
@@ -457,9 +459,7 @@ label {
 		padding: 300px;
 		padding-top: 50px;
 	}
-	.add_form {
-		overflow-y: scroll;
-	}
+	
 	.container.bg-primary {
 		padding-bottom: 16px;
 	}
