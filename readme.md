@@ -13,6 +13,10 @@
   </h3>
 </div>
 
+## Screenshot
+![Finished app screenshot](./assets/finished_app_screenshot.png)
+## Design
+  [This](https://www.figma.com/file/dqm7MLlazeGPjqyi3UU3fM/Birthday-App-(Copy)?node-id=7%3A72) is the design that I had to match the app with
 ## Demo
  The demo of this project can be seen by following this [link](https://birthday-app-rinon.netlify.app/)
 ## Structure of the project
