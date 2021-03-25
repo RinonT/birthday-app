@@ -78,15 +78,11 @@ h1 {
 input {
 	width: 100%;
 	outline: none;
-	border: none;
+	border: transparent;
 	padding: 5px;
 	border-radius: 4px;
 }
-
-input:focus {
-	border-color: blue;
-}
-
+ 
 select#select_month {
 	width: 100%;
 	font-weight: 500;
@@ -142,6 +138,10 @@ button, .filter_container input, .filter_container select {
 	padding-left: 20px;
 	border: none;
 	border-radius: 8px;
+}
+
+.filter_container input {
+	margin-bottom: 12px;
 }
 
 svg {
@@ -392,6 +392,9 @@ label {
 	}
 	.filter_list_container {
 		padding-left: 0;
+	}
+	.filter_container input {
+		margin-bottom: 0;
 	}
 	.list_container {
 		display: grid;
