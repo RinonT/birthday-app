@@ -21,7 +21,7 @@ It's a nice and helpful project. I have solidified my knowledge because there is
 
 ## How to use this project
 1. You need to run `npm install` in your bash terminal.
-1. Run `parcel index.html` or open index.hml file with live server
+1. Run `npm start` to open or open index.hml file with live server
 
 ## Contact
  
