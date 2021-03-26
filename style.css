@@ -29,6 +29,9 @@ h1 {
 
 .contents_container {
 	padding: 16px;
+	padding-top: 47px;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .list_container {
@@ -346,12 +349,6 @@ label {
 	color: red;
 }
 
-.today {
-	font-size: 24px;
-	font-style: italic;
-	color: royalblue;
-}
-
 @media(min-width: 1114px) {
 	header {
 		width: 100%;
@@ -371,7 +368,7 @@ label {
 		margin-right: auto;
 		flex-direction: row;
 		justify-content: unset;
-		column-gap: 35px;
+		column-gap: 34px;
 	}
 	.filter_container input {
 		font-size: 18px;
@@ -387,12 +384,9 @@ label {
 		max-width: 93%;
 	}
 	.container input {
-		width: 55%;
-	}
-	.contents_container {
-		padding-left: 0;
-		padding-right: 0;
-	}
+		width: 63%;
+	} 
+
 	.filter_list_container {
 		padding-left: 0;
 	}
@@ -402,9 +396,10 @@ label {
 	.list_container {
 		display: grid;
 		grid-template-columns: 16% 62% auto;
-		padding: 23px;
+		padding: 22px;
 		padding-left: 43px;
 		padding-right: 23px;
+		margin-bottom: 31px;
 	}
 	.list_container img {
 		width: 92px;
@@ -455,8 +450,11 @@ label {
 		margin-bottom: 0;
 	}
 	.container.form_container {
-		width: 82%;
-		padding: 300px;
+		max-width: 1079px;
+		height: 751px;
+		margin-top: auto;
+		margin-bottom: auto;
+		padding: 200px;
 		padding-top: 50px;
 	}
 	
@@ -505,6 +503,8 @@ label {
 	.peopleList_numberOfDays.days {
 		font-size: 24px;
 		line-height: 28px;
+		font-weight: 500; 
+		color: #5F6C7B;
 	}
 	.whishingBirthday_text {
 		font-size: 24px;
