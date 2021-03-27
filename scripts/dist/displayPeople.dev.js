@@ -87,7 +87,8 @@ var displayPersonsList = function displayPersonsList() {
   });
 
   function filterByName(peopleToFilter) {
-    var searchInputValue = _elements2.filterByNameInput.value; // Filter the people that includes what the user types in the search input
+    var searchInputValue = _elements2.filterByNameInput.value.trim(); // Filter the people that includes what the user types in the search input
+
 
     return peopleToFilter.filter(function (person) {
       return person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase());

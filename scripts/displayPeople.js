@@ -80,7 +80,7 @@ export const displayPersonsList = () => {
     }); 
 
     function filterByName(peopleToFilter) {
-        const searchInputValue = filterByNameInput.value;  
+        const searchInputValue = filterByNameInput.value.trim();  
         // Filter the people that includes what the user types in the search input
         return peopleToFilter.filter(person => person.firstName.toLowerCase().includes(searchInputValue.toLowerCase()) || person.lastName.toLowerCase().includes(searchInputValue.toLowerCase()));
     }
