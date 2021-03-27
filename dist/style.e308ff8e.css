@@ -12,11 +12,12 @@ body {
 	max-width: 779px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 16px;
+    padding-right: 16px;
 }
 
 header {
-	padding-top: 32px;
-	padding-left: 16px;
+	padding-top: 32px; 
 	margin-bottom: 48px;
 }
 
@@ -57,7 +58,8 @@ h1 {
 }
 
 .cancel.exit svg {
-	width: 58px;
+	max-width: 58px;
+    height: 58px;
 }
 
 .delete_container.bg-warning {
@@ -107,11 +109,7 @@ img {
 
 .personName {
 	color: royalblue;
-}
-
-.filter_list_container {
-	padding-left: 16px;
-}
+} 
 
 .open {
 	opacity: 1;
@@ -201,8 +199,8 @@ svg {
 }
 
 .submit {
-	padding-left: 45px;
-	padding-right: 45px;
+	padding-left: 21px;
+    padding-right: 16px;
 }
 
 .whishingBirthday_text {
@@ -328,11 +326,7 @@ button.submit_button {
 
 .peopleList_edit svg {
 	width: 40px;
-}
-
-.edit {
-	margin-right: 32px;
-}
+} 
 
 label {
 	font-size: 24px;
@@ -353,14 +347,18 @@ label {
 	header {
 		width: 100%;
 		display: flex;
-		padding-top: 63px;
-		padding-bottom: 42px;
+		padding-top: 63px; 
 		padding-left: 0;
 		margin: 0;
 	}
+	.page_main {
+		padding: 0;
+	}
 	h1 {
 		font-size: 64px;
+		line-height: 76px;
 		margin: 0;
+		margin-bottom: 42px;
 	}
 	.filter_container {
 		max-width: 774px;
@@ -395,17 +393,17 @@ label {
 	}
 	.list_container {
 		display: grid;
-		grid-template-columns: 13% 62% auto;
+		grid-template-columns: 18% 62% auto;
 		padding: 22px;
+		padding-bottom: 21px;
 		padding-left: 43px;
 		padding-right: 23px;
 		margin-bottom: 31px;
 	}
-	
+
 	.list_container img {
 		width: 92px;
-		height: 94px;
-		margin-right: 38px;
+		height: 94px; 
 	}
 	.button_container {
 		margin-top: 43px;
@@ -451,15 +449,15 @@ label {
 		flex-direction: row;
 		margin-bottom: 0;
 	}
-	.container.form_container {
+	.container.form_container, .delete_container {
 		max-width: 1079px;
 		height: 751px;
 		margin-top: auto;
 		margin-bottom: auto;
-		padding: 200px;
-		padding-top: 50px;
-	}
-	
+		padding: 200px; 
+		padding-top: 121px;
+	} 
+
 	.container.bg-primary {
 		padding-bottom: 16px;
 	}
@@ -473,11 +471,12 @@ label {
 		margin-right: auto;
 		font-size: 48px;
 		line-height: 57px;
-		color: #094067;
-		margin-top: 80px;
+		color: #094067; 
+		margin-top: -10px;
 		margin-bottom: 26px;
 	}
 	.cancel.exit {
+		top: 28px;
 		right: 52px;
 	}
 	.peopleList_info {

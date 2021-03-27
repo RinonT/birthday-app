@@ -1,7 +1,17 @@
 <h1 align="center">Birthday App</h1>
 
 ## Screenshot
-![Finished app screenshot](./assets/finished_app_screenshot.png)
+
+1. Desktop view
+
+![Desktop screeshot](./assets/finished_app_screenshot.png)
+  - Popup 
+![Popup screenshot](./assets/popup_screenshot.png)
+
+2. Mobile view
+
+![Popup screenshot](./assets/mobile_screenshot.png)
+
 ## Design
   Check the design for this app [in this link](https://www.figma.com/file/dqm7MLlazeGPjqyi3UU3fM/Birthday-App-(Copy)?node-id=7%3A72)
 ## Demo

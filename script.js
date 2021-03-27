@@ -58,9 +58,9 @@ async function fetchPersons() {
             <button class="cancel exit" name="cancel" >
                 <svg fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <p class="warning_text">
+            <h3 class="warning_text">
                 Are you sure you want to delete?
-            </p>
+            </h3>
             <button type="button" name="confirm" class="confirm_delete confirm_btn"> Confirm delete</button>
             <button type="button" name="cancel" class="cancel cancel_delete cancel_btn"> Cancel</button>
         </div>`);
