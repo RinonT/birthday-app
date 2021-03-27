@@ -16,7 +16,7 @@ export const htmlGenerator = (list) => {
 	 </div>
 	 <div class="peopleList_access">
          <p class="peopleList_numberOfDays days">
-            ${person.days > 1 ? `In ${person.days}` + " days" : person.days == 0 ? `<span class="today"> That's today!</span>` : person.days == 1 ? "Tomorrow" : "Invalid"}
+            ${person.days > 1 ? `In ${person.days}` + " days" : person.days == 0 ? `<span class="today"> Today!</span>` : person.days == 1 ? "Tomorrow" : "Invalid"}
          </p>
          <div class="peopleList_edit">
             <div class="edit">
