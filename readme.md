@@ -1,49 +1,27 @@
-# Term 3 JS Project : Birthday App
 <h1 align="center">Birthday App</h1>
-
-<div align="center">
-  <h3>
-    <a href="https://countryquiz-play.netlify.app/">
-      Demo
-    </a>
-    <span> | </span>
-    <a href="https://github.com/ganamavo/birthday-app">
-      Solution
-    </a>
-  </h3>
-</div>
 
 ## Screenshot
 ![Finished app screenshot](./assets/finished_app_screenshot.png)
 ## Design
-  [This](https://www.figma.com/file/dqm7MLlazeGPjqyi3UU3fM/Birthday-App-(Copy)?node-id=7%3A72) is the design that I had to match the app with
+  Check the design for this app [in this link](https://www.figma.com/file/dqm7MLlazeGPjqyi3UU3fM/Birthday-App-(Copy)?node-id=7%3A72)
 ## Demo
  The demo of this project can be seen by following this [link](https://birthday-app-rinon.netlify.app/)
-## Structure of the project
-- I started with fetching the data from the people.json
-- Generating a reusable html in a function called `htmlGenerator` so that I can reuse it whenever I want to.
-- I wrapped everything inside of the `fetchPeole` function, which is an async function.
-- Before displaying the list on the html, the object is store in the local storage.
-- I couldn't use the **date-fns**, so I used just vanilla js to get it. It is done before creating the `person` object that is used for sorting the people by the number of the days.
-- The filters are set in the `displayPersonList` function so that I can use the new object that is created there.
-- After displaying the list is the function that enables us to add a new person followed by the `editPerson` function. 
-- I destroy the popup by removing the class **open** from the form. This is used everywhere I have a cancel button.
-- To delete the list, I used the filter method which filters the ones that don't have the id that is passed in the condition.
-
-## My experience
-The challenge is to create an app that shows people's birthdays, enables users to edit or delete a list, and most importantly, add people to the list. This is build with vanilla js without using any library.
-
-
-## Most challenging part
+## Features
+An app that display a list of people with their birthdays and allows pontential users to add and edit a list. 
+Users can filter by either a name or a month or a name with a month.
+The data was fetched from the server by a given API and stored in the local storage so that it can be used anytime once stored in our local machine.
  
-- Working on the date without date-fns but just with plain js
- 
+## Technologies used
+- HTML and CSS
+- Vanilla js without any framework.
+
+
 ## Comment
-It's a nice and helpful project. I have solidified my knowledge because there is a lot of stuff that I gained from it. Thanks for that!
+It's a nice and helpful project. I have solidified my knowledge because there is a lot of stuff that I gained from it.
 
 ## How to use this project
 1. You need to run `npm install` in your bash terminal.
-1. Run `parcel index.html` or open index.hml file with live server
+1. Run `npm start` to open or open index.hml file with live server
 
 ## Contact
  
