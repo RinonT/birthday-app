@@ -327,7 +327,7 @@ button.submit_button {
 }
 
 .peopleList_edit svg {
-	width: 36px;
+	width: 40px;
 }
 
 .edit {
@@ -395,15 +395,17 @@ label {
 	}
 	.list_container {
 		display: grid;
-		grid-template-columns: 16% 62% auto;
+		grid-template-columns: 13% 62% auto;
 		padding: 22px;
 		padding-left: 43px;
 		padding-right: 23px;
 		margin-bottom: 31px;
 	}
+	
 	.list_container img {
 		width: 92px;
 		height: 94px;
+		margin-right: 38px;
 	}
 	.button_container {
 		margin-top: 43px;
