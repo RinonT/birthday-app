@@ -13,11 +13,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 16px;
-    padding-right: 16px;
+	padding-right: 16px;
 }
 
 header {
-	padding-top: 32px; 
+	padding-top: 32px;
 	margin-bottom: 48px;
 }
 
@@ -58,8 +58,8 @@ h1 {
 }
 
 .cancel.exit svg {
-	max-width: 58px;
-    height: 58px;
+	max-width: 42px;
+	height: 42px;
 }
 
 .delete_container.bg-warning {
@@ -87,7 +87,7 @@ input {
 	padding: 5px;
 	border-radius: 4px;
 }
- 
+
 select#select_month {
 	width: 100%;
 	font-weight: 500;
@@ -109,7 +109,7 @@ img {
 
 .personName {
 	color: royalblue;
-} 
+}
 
 .open {
 	opacity: 1;
@@ -166,20 +166,20 @@ svg {
 .confirm_delete {
 	background: #EF4565;
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 15px;
 	line-height: 21px;
 	color: #FFFFFE;
-	padding-top: 17px;
-	padding-bottom: 17px;
-	margin-right: 16px;
+	padding: 12px;
+	padding-top: 12px;
 }
 
 .cancel_delete, .cancel {
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 15px;
 	line-height: 21px;
-	padding-left: 45px;
-	padding-right: 45px;
+	padding: 10px;
+	padding-left: 33px;
+	padding-right: 33px;
 	background: #FFFFFF;
 	border: 2px solid #5F6C7B;
 	box-sizing: border-box;
@@ -200,7 +200,7 @@ svg {
 
 .submit {
 	padding-left: 21px;
-    padding-right: 16px;
+	padding-right: 16px;
 }
 
 .whishingBirthday_text {
@@ -273,9 +273,11 @@ strong {
 	line-height: 21px;
 	color: #FFFFFE;
 }
+
 .add_form {
 	overflow-y: scroll;
 }
+
 .popup .button_container {
 	/* flex-direction: column; */
 	flex-wrap: wrap;
@@ -327,7 +329,7 @@ button.submit_button {
 
 .peopleList_edit svg {
 	width: 40px;
-} 
+}
 
 label {
 	font-size: 24px;
@@ -344,11 +346,16 @@ label {
 	color: red;
 }
 
+.warning_text {
+	font-size: 28px;
+	line-height: 33px;
+}
+
 @media(min-width: 1114px) {
 	header {
 		width: 100%;
 		display: flex;
-		padding-top: 63px; 
+		padding-top: 63px;
 		padding-left: 0;
 		margin: 0;
 	}
@@ -384,8 +391,7 @@ label {
 	}
 	.container input {
 		width: 63%;
-	} 
-
+	}
 	.filter_list_container {
 		padding-left: 0;
 	}
@@ -401,10 +407,9 @@ label {
 		padding-right: 23px;
 		margin-bottom: 31px;
 	}
-
 	.list_container img {
 		width: 92px;
-		height: 94px; 
+		height: 94px;
 	}
 	.button_container {
 		margin-top: 43px;
@@ -455,10 +460,9 @@ label {
 		height: 751px;
 		margin-top: auto;
 		margin-bottom: auto;
-		padding: 200px; 
+		padding: 200px;
 		padding-top: 121px;
-	} 
-
+	}
 	.container.bg-primary {
 		padding-bottom: 16px;
 	}
@@ -472,7 +476,7 @@ label {
 		margin-right: auto;
 		font-size: 48px;
 		line-height: 57px;
-		color: #094067; 
+		color: #094067;
 		margin-top: -10px;
 		margin-bottom: 26px;
 	}
@@ -486,6 +490,10 @@ label {
 	.container, .delete_container {
 		width: 60%;
 	}
+	.cancel.exit svg {
+		max-width: 58px;
+		height: 58px;
+	}
 	.delete_container.form_container {
 		transform: translateY(80%);
 		-webkit-transform: translateY(80%);
@@ -493,10 +501,23 @@ label {
 		-ms-transform: translateY(80%);
 		-o-transform: translateY(80%);
 	}
+	.confirm_delete {
+		font-size: 18px;
+		line-height: 21px;
+		padding-top: 17px;
+		padding-bottom: 17px;
+		margin-right: 16px;
+	}
 	.peopleList_name {
 		font-size: 36px;
 		line-height: 43px;
 		margin: 0;
+	}
+	.cancel_delete, .cancel {
+		font-size: 18px;
+		line-height: 21px;
+		padding-left: 45px;
+		padding-right: 45px;
 	}
 	.peopleList_birthday.date {
 		font-size: 24px;
@@ -505,7 +526,7 @@ label {
 	.peopleList_numberOfDays.days {
 		font-size: 24px;
 		line-height: 28px;
-		font-weight: 500; 
+		font-weight: 500;
 		color: #5F6C7B;
 	}
 	.whishingBirthday_text {
@@ -518,11 +539,11 @@ label {
 		justify-content: flex-end;
 	}
 	button.add_list {
-		margin: 0; 
+		margin: 0;
 		line-height: 21px;
 	}
 	.popup .button_container {
-		justify-content: flex-start; 
+		justify-content: flex-start;
 	}
 	button.submit.save_btn {
 		padding-left: 21px;
