@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Birthday app</title>
+	<link rel="preconnect" href="4a8a00904bae35c1104942c334d95ef2">
+	<link href="4b25e56ced3812dbe9ad30f14fcb252b" rel="stylesheet">
+	<link rel="stylesheet" href="f3f3fd527e0fec77711e53d43ba27b6d" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="381af7e926dee1ccea208748d9a01fe7">
+</head>
+
+<body>
+	<main class="page_main">
+		<header>
+			<h1>Birthday app</h1>
+		</header>
+		<form class="filter_list_container">
+			<div class="filter_container">
+				<div class="input_container">
+					<label class="filter_by_name" for="filterByName">Filter by name: </label>
+					<input type="text" name="filterByName" placeholder="Type a name" id="filterByName">
+				</div>
+				<div class="input_container">
+
+					<label class="filter_by_month" for="select_month">Filter by month: </label>
+					<select name="months" id="select_month">
+						<option value="empty" label="All months">
+						</option><option value="Jan" label="January">
+						</option><option value="Feb" label="February">
+						</option><option value="Mar" label="March">
+						</option><option value="Apr" label="April">
+						</option><option value="May" label="May">
+						</option><option value="Jun" label="June">
+						</option><option value="July" label="July">
+						</option><option value="Aug" label="August">
+						</option><option value="Sep" label="September">
+						</option><option value="Oct" label="October">
+						</option><option value="Nov" label="November">
+						</option><option value="Dec" label="December">
+					</option></select>
+				</div>
+				<div class="button_container">
+					<!-- <div>
+						<button type="button" class="reset_filter" id="reset_filter"> Reset filters</button>
+					</div> -->
+					<div class="add_list_container">
+						<button class="add_list" type="button">Add somebody</button>
+					</div>
+				</div>
+		</div></form>
+		<div class="peopleList_container">
+			<div class="contents_container"></div>
+		</div>
+	</main>
+	<script src="391e77734e18147872fe1a26054a1c50" type="module"></script>
+
+</body>
+
+</html>

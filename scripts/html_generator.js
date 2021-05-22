@@ -1,11 +1,12 @@
-import { persons } from "../script";
-
 // Generate the html
 export const htmlGenerator = (list) => {
-    return list.map(person => {
-        return `
+  return list
+    .map((person) => {
+      return `
         <div data-id="${person.id}" class="list_container">
-        <img class="peopleList_image" src="${person.picture}" alt="${person.firstName}'s picture">
+        <img class="peopleList_image" src="${person.picture}" alt="${
+        person.firstName
+      }'s picture">
 	     <div class="peopleList_info">
 		<p class="peopleList_name">
             ${person.firstName} ${person.lastName} 
@@ -16,7 +17,15 @@ export const htmlGenerator = (list) => {
 	 </div>
 	 <div class="peopleList_access">
          <p class="peopleList_numberOfDays days">
-            ${person.days > 1 ? `In ${person.days}` + " days" : person.days == 0 ? `<span class="today"> Today!</span>` : person.days == 1 ? "Tomorrow" : "Invalid"}
+            ${
+              person.days > 1
+                ? `In ${person.days}` + ' days'
+                : person.days == 0
+                ? `<span class="today"> Today!</span>`
+                : person.days == 1
+                ? 'Tomorrow'
+                : 'Invalid'
+            }
          </p>
          <div class="peopleList_edit">
             <div class="edit">
@@ -27,5 +36,7 @@ export const htmlGenerator = (list) => {
             </div>
 		 </div>
 	 </div>
-     </div>`}).join("");
+     </div>`
+    })
+    .join('')
 }

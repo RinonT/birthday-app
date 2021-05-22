@@ -1,0 +1,590 @@
+body {
+  background-color: #d8eefe;
+  font-family: 'Rubik', sans-serif;
+}
+
+.overflow_hidden {
+  overflow-y: hidden;
+  position: relative;
+}
+
+.page_main {
+  max-width: 779px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+header {
+  padding-top: 32px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+  color: #094067;
+}
+
+.contents_container {
+  padding: 16px;
+  padding-top: 47px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list_container {
+  background-color: #fffffe;
+  padding: 16px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  padding-top: 0;
+  transition: all 0.25s;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cancel.exit svg {
+  max-width: 32px;
+  height: 32px;
+}
+
+.delete_container.bg-warning {
+  transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  -o-transform: translateY(0%);
+}
+
+.delete_container.bg-warning button {
+  margin-right: 32px;
+  margin-bottom: 12px;
+}
+
+.warning_text {
+  font-size: 48px;
+  line-height: 57px;
+  margin-bottom: 0;
+}
+
+.popup label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+input {
+  width: 100%;
+  outline: none;
+  border: transparent;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+select#select_month {
+  width: 100%;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #5f6c7b;
+  background-color: #ffffff;
+  background-image: url(arrow-select.HASH_REF_542b901aa150168bc257631bb7674915.svg);
+  background-repeat: no-repeat;
+  background-position: 88% center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Remove default arrow */
+}
+
+img {
+  border-radius: 5px;
+}
+
+.personName {
+  color: royalblue;
+}
+
+.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.container,
+.delete_container {
+  background-color: #ffffff;
+  position: relative;
+  padding: 32px;
+  padding-top: 104px;
+}
+
+.container input {
+  background: #d8eefe;
+}
+
+button:focus {
+  outline: none;
+}
+
+button,
+.filter_container input,
+.filter_container select {
+  font-size: 16px;
+  padding: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 8px;
+}
+
+.filter_container input {
+  margin-bottom: 12px;
+}
+
+svg {
+  max-width: 40px;
+  cursor: pointer;
+}
+
+.warning_text {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
+  color: #094067;
+  margin-bottom: 48px;
+}
+
+.delete_container {
+  /* margin-top: 57px; */
+  height: 70%;
+  margin-top: 45px;
+}
+
+.cancel_delete,
+.cancel,
+.confirm_delete {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 16px;
+  padding: 12px;
+  padding-top: 12px;
+}
+
+.confirm_delete {
+  background: #ef4565;
+  color: #fffffe;
+  margin-right: 16px;
+}
+
+.cancel_delete,
+.cancel {
+  background: #ffffff;
+  border: 2px solid #5f6c7b;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 11px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.cancel.exit {
+  position: absolute;
+  top: 39px;
+  right: 26px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  padding-top: 12px;
+}
+
+.submit {
+  padding-left: 21px;
+  padding-right: 16px;
+}
+
+.whishingBirthday_text {
+  font-size: 16px;
+  margin-top: 12px;
+  color: skyblue;
+}
+
+.whishingBirthday_text svg {
+  width: 20px;
+}
+
+strong {
+  color: #ef4565;
+}
+
+.confirm_btn::hover {
+  background-color: #ef454e93;
+}
+
+.cancel_btn:hover {
+  background-color: rgba(0, 128, 117, 0.397);
+}
+
+.add_list {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 15px;
+  padding-left: 18px;
+  padding-right: 11px;
+  margin-bottom: 16px;
+  background-color: #ef4565;
+  border-radius: 5px;
+  color: white;
+}
+
+.add_list:hover {
+  background-color: blue;
+  border-color: red;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.filter_container {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.filter_container label {
+  display: block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 13px;
+  color: #094067;
+}
+
+.button_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.save_btn {
+  background: #ef4565;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fffffe;
+}
+
+.add_form {
+  overflow-y: scroll;
+}
+
+.popup .button_container {
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+}
+
+.popup .button_container button {
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+button.submit_button {
+  background: #ef4565;
+  font-size: 18px;
+  line-height: 21px;
+  color: #fffffe;
+}
+
+.reset_filter {
+  background-color: blue;
+  color: #ffffff;
+}
+
+.reset_filter:hover {
+  background-color: grey;
+  color: white;
+}
+
+.peopleList_name {
+  font-weight: 500;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.peopleList_birthday.date {
+  font-size: 17px;
+  line-height: 21px;
+  color: #5f6c7b;
+}
+
+.peopleList_edit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: -1px;
+}
+
+.peopleList_edit svg {
+  width: 40px;
+}
+
+label {
+  font-size: 24px;
+}
+
+.result_container {
+  display: flex;
+  flex-direction: row;
+  transform: translateX(100%);
+}
+
+.result_container p {
+  font-size: 32px;
+  color: red;
+}
+
+@media (min-width: 1114px) {
+  header {
+    width: 100%;
+    display: flex;
+    padding-top: 63px;
+    padding-left: 0;
+    margin: 0;
+  }
+  .page_main {
+    padding: 0;
+  }
+  h1 {
+    font-size: 64px;
+    line-height: 76px;
+    margin: 0;
+    margin-bottom: 42px;
+  }
+  .filter_container {
+    max-width: 774px;
+    margin-left: auto;
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: unset;
+    column-gap: 37px;
+  }
+  .filter_container input {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .input_container {
+    flex-basis: 35%;
+  }
+  input {
+    max-width: 100%;
+  }
+  select#select_month {
+    max-width: 100%;
+  }
+  .container input {
+    width: 63%;
+  }
+  .filter_list_container {
+    padding-left: 0;
+  }
+  .filter_container input {
+    margin-bottom: 0;
+  }
+  .list_container {
+    display: grid;
+    grid-template-columns: 18% 62% auto;
+    padding: 22px;
+    padding-bottom: 18px;
+    padding-left: 43px;
+    padding-right: 23px;
+    margin-bottom: 31px;
+  }
+  .list_container img {
+    width: 92px;
+    height: 94px;
+  }
+  .button_container {
+    margin-top: 43px;
+    justify-content: unset;
+  }
+  .button_container button {
+    margin-right: 12px;
+  }
+  .popup {
+    padding-top: 0;
+  }
+  .popup .button_container {
+    margin-top: 12px;
+  }
+  .popup label,
+  .popup input {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+  }
+  .popup input {
+    margin-bottom: 11px;
+    padding: 15px;
+    padding-left: 20px;
+  }
+  .popup input::placeholder {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+  }
+  button#reset_filter {
+    font-weight: 600;
+  }
+  button.submit_button {
+    background: #ef4565;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #fffffe;
+  }
+  .popup .button_container {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  .container.form_container,
+  .delete_container {
+    max-width: 1079px;
+    height: 751px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 200px;
+    padding-top: 121px;
+  }
+  .container.bg-primary {
+    padding-bottom: 16px;
+  }
+  .peopleList_access {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .popup h3 {
+    width: 120%;
+    margin-right: auto;
+    font-size: 48px;
+    line-height: 57px;
+    color: #094067;
+    margin-top: -10px;
+    margin-bottom: 26px;
+  }
+  .cancel.exit {
+    top: 28px;
+    right: 52px;
+  }
+  .cancel.exit svg {
+    max-width: 32px;
+    height: 32px;
+  }
+  .peopleList_info {
+    margin-top: 5px;
+  }
+  .container,
+  .delete_container {
+    width: 60%;
+  }
+  .cancel.exit svg {
+    max-width: 58px;
+    height: 58px;
+  }
+  .delete_container.form_container {
+    transform: translateY(80%);
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+  }
+  .confirm_delete {
+    font-size: 18px;
+    line-height: 21px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    margin-right: 16px;
+  }
+  .peopleList_name {
+    font-size: 36px;
+    line-height: 43px;
+    margin: 0;
+  }
+  .cancel_delete,
+  .cancel {
+    font-size: 18px;
+    line-height: 21px;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  .peopleList_birthday.date {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .peopleList_numberOfDays.days {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #5f6c7b;
+  }
+  .whishingBirthday_text {
+    font-size: 24px;
+    margin-top: 17px;
+  }
+  .button_container {
+    margin-top: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  button.add_list {
+    margin: 0;
+    line-height: 21px;
+  }
+  .popup .button_container {
+    justify-content: flex-start;
+  }
+  button.submit.save_btn {
+    padding-left: 21px;
+    padding-right: 16px;
+  }
+  button.cancel {
+    padding-left: 48px;
+    padding-right: 60px;
+  }
+  cancel.exit {
+    font-size: 58px;
+  }
+  .edit {
+    margin-right: 16px;
+  }
+  .cancel {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5f6c7b;
+    background-color: #ffffff;
+    border: 2px solid #5f6c7b;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=index.HASH_REF_8a6e625a6f078c797be837fbf556d9ac.css.map */

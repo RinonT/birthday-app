@@ -1,0 +1,30 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "wait", function () {
+  return wait;
+});
+_parcelHelpers.export(exports, "displayList", function () {
+  return displayList;
+});
+_parcelHelpers.export(exports, "destroyPopup", function () {
+  return destroyPopup;
+});
+var _html_generatorJs = require("./html_generator.js");
+var _elementsJs = require("./elements.js");
+function wait(ms = 0) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+const displayList = object => {
+  const listHtml = _html_generatorJs.htmlGenerator(object);
+  _elementsJs.listContainer.innerHTML = listHtml;
+  _elementsJs.table.dispatchEvent(new CustomEvent('updateList'));
+};
+async function destroyPopup(popup) {
+  popup.classList.remove('open');
+  await wait(500);
+  // remove the popup from the DOM
+  popup.remove();
+  _elementsJs.body.classList.remove("overflow_hidden");
+  // remove it from the js memory
+  popup = null;
+}
