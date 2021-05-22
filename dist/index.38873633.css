@@ -1,0 +1,229 @@
+@media (min-width: 1114px) {
+  header {
+    width: 100%;
+    display: flex;
+    padding-top: 63px;
+    padding-left: 0;
+    margin: 0;
+  }
+  .page_main {
+    padding: 0;
+  }
+  h1 {
+    font-size: 64px;
+    line-height: 76px;
+    margin: 0;
+    margin-bottom: 42px;
+  }
+  .filter_container {
+    max-width: 774px;
+    margin-left: auto;
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: unset;
+    column-gap: 37px;
+  }
+  .filter_container input {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .input_container {
+    flex-basis: 35%;
+  }
+  input {
+    max-width: 100%;
+  }
+  select#select_month {
+    max-width: 100%;
+  }
+  .container input {
+    width: 63%;
+  }
+  .filter_list_container {
+    padding-left: 0;
+  }
+  .filter_container input {
+    margin-bottom: 0;
+  }
+  .list_container {
+    display: grid;
+    grid-template-columns: 18% 62% auto;
+    padding: 22px;
+    padding-bottom: 18px;
+    padding-left: 43px;
+    padding-right: 23px;
+    margin-bottom: 31px;
+  }
+  .list_container img {
+    width: 92px;
+    height: 94px;
+  }
+  .button_container {
+    margin-top: 43px;
+    justify-content: unset;
+  }
+  .button_container button {
+    margin-right: 12px;
+  }
+  .popup {
+    padding-top: 0;
+  }
+  .popup .button_container {
+    margin-top: 12px;
+  }
+  .popup label,
+  .popup input {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+  }
+  .popup input {
+    margin-bottom: 11px;
+    padding: 15px;
+    padding-left: 20px;
+  }
+  .popup input::placeholder {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #094067;
+  }
+  button#reset_filter {
+    font-weight: 600;
+  }
+  button.submit_button {
+    background: #ef4565;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #fffffe;
+  }
+  .popup .button_container {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  .container.form_container,
+  .delete_container {
+    max-width: 1079px;
+    height: 751px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 200px;
+    padding-top: 121px;
+  }
+  .container.bg-primary {
+    padding-bottom: 16px;
+  }
+  .peopleList_access {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .popup h3 {
+    width: 120%;
+    margin-right: auto;
+    font-size: 48px;
+    line-height: 57px;
+    color: #094067;
+    margin-top: -10px;
+    margin-bottom: 26px;
+  }
+  .cancel.exit {
+    top: 28px;
+    right: 52px;
+  }
+
+  .peopleList_info {
+    margin-top: 5px;
+  }
+
+  .container,
+  .delete_container {
+    width: 60%;
+  }
+
+  .cancel.exit svg {
+    max-width: 58px;
+    height: 58px;
+  }
+
+  .delete_container.form_container {
+    transform: translateY(80%);
+    -webkit-transform: translateY(80%);
+    -moz-transform: translateY(80%);
+    -ms-transform: translateY(80%);
+    -o-transform: translateY(80%);
+  }
+  .confirm_delete {
+    font-size: 18px;
+    line-height: 21px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    margin-right: 16px;
+  }
+  .peopleList_name {
+    font-size: 36px;
+    line-height: 43px;
+    margin: 0;
+  }
+  .cancel_delete,
+  .cancel {
+    font-size: 18px;
+    line-height: 21px;
+    padding: 16px;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  .peopleList_birthday.date {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .peopleList_numberOfDays.days {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #5f6c7b;
+  }
+  .whishingBirthday_text {
+    font-size: 24px;
+    margin-top: 17px;
+  }
+  .button_container {
+    margin-top: 0;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  button.add_list {
+    margin: 0;
+    line-height: 21px;
+  }
+  .popup .button_container {
+    justify-content: flex-start;
+  }
+  button.submit.save_btn {
+    padding-left: 21px;
+    padding-right: 16px;
+  }
+  button.cancel {
+    padding-left: 48px;
+    padding-right: 60px;
+  }
+  cancel.exit {
+    font-size: 58px;
+  }
+  .edit {
+    margin-right: 16px;
+  }
+  .cancel {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5f6c7b;
+    background-color: #ffffff;
+    border: 2px solid #5f6c7b;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=index.38873633.css.map */

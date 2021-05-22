@@ -5,11 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Birthday app</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="/index.eedcf9b8.css">
-	<link rel="stylesheet" href="/index.38873633.css">
+	<link rel="preconnect" href="4a8a00904bae35c1104942c334d95ef2">
+	<link href="4b25e56ced3812dbe9ad30f14fcb252b" rel="stylesheet">
+	<link rel="stylesheet" href="f3f3fd527e0fec77711e53d43ba27b6d" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="183709a9a2b02c124e31633d8e766bbf">
+	<link rel="stylesheet" href="1529d7dde710e5e2582e6bc1829e719a">
 </head>
 
 <body>
@@ -55,7 +55,7 @@
 			<div class="contents_container"></div>
 		</div>
 	</main>
-	<script src="/index.b4f5078c.js" type="module"></script>
+	<script src="391e77734e18147872fe1a26054a1c50" type="module"></script>
 
 </body>
 
