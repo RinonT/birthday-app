@@ -22,13 +22,8 @@ Users can filter by either a name or a month or a name with a month.
 The data was fetched from the server by a given API and stored in the local storage so that it can be used anytime once stored in our local machine.
  
 ## Technologies used
-- HTML and CSS
-- Vanilla js without any framework.
-
-
-## Comment
-It's a nice and helpful project. I have solidified my knowledge because there is a lot of stuff that I gained from it.
-
+- Vanilla JS
+ 
 ## How to use this project
 1. You need to run `npm install` in your bash terminal.
 1. Run `npm start` to open or open index.hml file with live server
@@ -36,5 +31,4 @@ It's a nice and helpful project. I have solidified my knowledge because there is
 ## Contact
  
 -  GitHub [@ganamavo](https://github.com/ganamavo)
--  Twitter [@twitter](https://twitter.com/RTendrinomena)
-
+-  Twitter [@twitter](https://twitter.com/Tojo_Rinon)
