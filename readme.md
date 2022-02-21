@@ -17,7 +17,7 @@
 ## Demo
  The demo of this project can be seen by following this [link](https://birthday-app-rinon.netlify.app/)
 ## Features
-An app that display a list of people with their birthdays and allows pontential users to add and edit a list. 
+An app that displays a list of people with their birthdays and allows potential users to add and edit a list. 
 Users can filter by either a name or a month or a name with a month.
 The data was fetched from the server by a given API and stored in the local storage so that it can be used anytime once stored in our local machine.
  
